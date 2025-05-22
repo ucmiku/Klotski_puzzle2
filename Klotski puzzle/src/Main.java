@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
         music.playmusic();
 
-        Login log = new Login();
+        Login log = new Login();//fuck
         log.setVisible(true);
 
     }
