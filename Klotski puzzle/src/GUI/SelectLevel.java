@@ -3,8 +3,10 @@ package GUI;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
+import java.util.Random;
 
 import game_logic.Board;
+import game_logic.Boards;
 import loginmodel.LoginSystem;
 
 public class SelectLevel extends JFrame {
@@ -14,6 +16,8 @@ public class SelectLevel extends JFrame {
     private JButton l2 = new JButton("移形换影");
     private JButton l3 = new JButton("科技革命");
     public static JButton l4 = new JButton("继续游戏");
+    private Boards boards = new Boards();
+
     JPanel GamePanel;
     public SelectLevel(){
         GamePanel = new JPanel() {
@@ -64,7 +68,8 @@ public class SelectLevel extends JFrame {
             level=2;
             dispose();
             GameBoard gameBoard = null;
-            Board b = new Board();
+            Random rand = new Random();
+            Board b = boards.boards[rand.nextInt(5)];
             b.setLoginSystem(Login.loginSystem);
             gameBoard = new GameBoard(b,Login.IsVisitor);
             GameBoard.seconds = 300;
@@ -93,5 +98,9 @@ public class SelectLevel extends JFrame {
                 gameBoard.setVisible(true);
             });
         }
+    }
+
+    public Boards getBoards() {
+        return boards;
     }
 }

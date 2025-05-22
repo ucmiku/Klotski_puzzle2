@@ -2,6 +2,7 @@ package GUI;
 
 import game_logic.Board;
 import game_logic.Block;
+import game_logic.Boards;
 import loginmodel.LoginSystem;
 import javax.swing.Timer;
 import javax.swing.*;
@@ -24,6 +25,7 @@ public class GameBoard extends JFrame {
     private ArrayList<tool> Tools = new ArrayList<>();
     private Image backgroundImage=images.backboard;
     private Image chessboardImage = images.chessboardImage;
+    private Boards boards = new Boards();
 
     public static int seconds; // 时间
     public Timer playtime;
@@ -140,15 +142,6 @@ public class GameBoard extends JFrame {
         GamePanel.add(timeLabel);
         GamePanel.add(timeLabel2);
 
-        // 添加棋子块
-        for (int i = 0; i < 10; i++) {
-            addChessBlock(board.blocks[i].getName(),
-                    board.blocks[i].getX_length(),
-                    board.blocks[i].getY_length(),
-                    board.blocks[i].getX_cordinate(),
-                    board.blocks[i].getY_cordinate());
-        }
-
         if (SelectLevel.level==1){ //关卡1：随机删除一个除了曹操以外的方块
             Random rand = new Random();
             int index = rand.nextInt(8) + 1;
@@ -162,9 +155,15 @@ public class GameBoard extends JFrame {
             Characters.get(index).setVisible(false);
         }
 
-        if(SelectLevel.level == 2){
-
+        // 添加棋子块
+        for (int i = 0; i < 10; i++) {
+            addChessBlock(board.blocks[i].getName(),
+                    board.blocks[i].getX_length(),
+                    board.blocks[i].getY_length(),
+                    board.blocks[i].getX_cordinate(),
+                    board.blocks[i].getY_cordinate());
         }
+
 
         // 按钮事件监听
         withdraw.addActionListener(e -> {
@@ -226,6 +225,10 @@ public class GameBoard extends JFrame {
             if(SelectLevel.level==3){
             Tools.get(0).setUsed(false);
             Tools.get(1).setUsed(false);
+            }
+            if(SelectLevel.level == 2){
+                Random rand = new Random();
+                board = boards.boards[rand.nextInt(5)];
             }
             for(int i = 0;i < 10 ;i++){
                 if(Characters.get(i).getX() != board.blocks[i].getX_cordinate() * 60 || Characters.get(i).getY() != board.blocks[i].getY_cordinate() * 60){
