@@ -162,7 +162,7 @@ public class GameBoard extends JFrame {
             Characters.get(index).setVisible(false);
         }
 
-        if(SelectLevel.level == 2){//关卡2：改变顺序
+        if(SelectLevel.level == 2){
 
         }
 

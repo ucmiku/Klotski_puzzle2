@@ -26,11 +26,11 @@ public class SelectLevel extends JFrame {
         };
         GridBagLayout gbLayout = new GridBagLayout();
         GamePanel.setLayout(gbLayout);
-        GamePanel.setBounds(0, 0, 400, 200);
+        GamePanel.setBounds(0, 0, 450, 250);
         setContentPane(GamePanel);
 
         setTitle("选关界面");
-        setSize(400,200);
+        setSize(450,250);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
