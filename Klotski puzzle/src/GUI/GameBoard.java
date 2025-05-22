@@ -466,7 +466,9 @@ public class GameBoard extends JFrame {
 
     private void ToolClock(){
         pauseGameTimer();
-        restartGameTimer();
+        Random rand = new Random();
+        seconds += rand.nextInt(120) + 30;
+        startGameTimer();
     }
 
     private void deleteZu(){
