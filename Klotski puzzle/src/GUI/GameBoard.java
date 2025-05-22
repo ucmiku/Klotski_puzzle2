@@ -4,6 +4,7 @@ import game_logic.Board;
 import game_logic.Block;
 import game_logic.Boards;
 import loginmodel.LoginSystem;
+import music.music;
 import javax.swing.Timer;
 import javax.swing.*;
 import javax.tools.Tool;
@@ -349,6 +350,7 @@ public class GameBoard extends JFrame {
         BoardPanel.addKeyListener(new KeyAdapter() {
             @Override
             public void keyPressed(KeyEvent e) {
+                music.playsound();
                 if (selectedButton == null) return;
 
                 char c;
@@ -359,7 +361,7 @@ public class GameBoard extends JFrame {
                     case KeyEvent.VK_RIGHT -> c = 'r';
                     default -> { return; }
                 }
-
+                music.playsound();
                 for (Block block : board.blocks) {
                     if (block.getName().equals(selectedButton.getName())) {
                         board.movement(c, block);
@@ -531,6 +533,7 @@ public class GameBoard extends JFrame {
 
     //移动动画实现
     private void animateMove(BlockButton button,int finalX,int finalY){
+
         final int startX = button.getX();
         final int startY = button.getY();
         final int animationSteps = 10;
