@@ -28,8 +28,10 @@ public class Boards {
         boards[0].blocks[8].setY_cordinate(5);
         boards[0].blocks[9].setX_cordinate(4);//zufour
         boards[0].blocks[9].setY_cordinate(4);
+        boards[0].changeIs_available(5,2,false);
+        boards[0].changeIs_available(5,3,false);
         boards[0].changeIs_available(1,1,true);
-        boards[0].changeIs_available(4,1,true);
+        boards[0].changeIs_available(1,4,true);
 
         boards[1].blocks[0].setX_cordinate(2);//caocao
         boards[1].blocks[0].setY_cordinate(1);
@@ -51,8 +53,10 @@ public class Boards {
         boards[1].blocks[8].setY_cordinate(3);
         boards[1].blocks[9].setX_cordinate(4);//zufour
         boards[1].blocks[9].setY_cordinate(4);
-        boards[1].changeIs_available(1,5,true);
-        boards[1].changeIs_available(4,5,true);
+        boards[1].changeIs_available(5,2,false);
+        boards[1].changeIs_available(5,3,false);
+        boards[1].changeIs_available(5,1,true);
+        boards[1].changeIs_available(5,4,true);
 
         boards[2].blocks[0].setX_cordinate(1);//caocao
         boards[2].blocks[0].setY_cordinate(1);
@@ -74,8 +78,10 @@ public class Boards {
         boards[2].blocks[8].setY_cordinate(3);
         boards[2].blocks[9].setX_cordinate(2);//zufour
         boards[2].blocks[9].setY_cordinate(4);
-        boards[2].changeIs_available(1,5,true);
-        boards[2].changeIs_available(2,5,true);
+        boards[2].changeIs_available(5,2,false);
+        boards[2].changeIs_available(5,3,false);
+        boards[2].changeIs_available(5,1,true);
+        boards[2].changeIs_available(5,2,true);
 
         boards[3].blocks[0].setX_cordinate(2);//caocao
         boards[3].blocks[0].setY_cordinate(1);
@@ -97,7 +103,9 @@ public class Boards {
         boards[3].blocks[8].setY_cordinate(5);
         boards[3].blocks[9].setX_cordinate(4);//zufour
         boards[3].blocks[9].setY_cordinate(5);
-        boards[3].changeIs_available(1,1,true);
-        boards[3].changeIs_available(4,1,true);
+        boards[3].changeIs_available(5,2,false);
+        boards[3].changeIs_available(5,3,false);
+        boards[3].changeIs_available(4,3,true);
+        boards[3].changeIs_available(5,3,true);
     }
 }
