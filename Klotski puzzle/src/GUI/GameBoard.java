@@ -26,7 +26,6 @@ public class GameBoard extends JFrame {
     public static ArrayList<tool> Tools = new ArrayList<>();
     private Image backgroundImage=images.backboard;
     private Image chessboardImage = images.chessboardImage;
-    private Boards boards = new Boards();
 
     public static int seconds; // 时间
     public static int seconds1;
@@ -230,7 +229,7 @@ public class GameBoard extends JFrame {
             }
             if(SelectLevel.level == 2){
                 Random rand = new Random();
-                board = boards.boards[rand.nextInt(5)];
+                board = new Boards().boards[rand.nextInt(5)];
             }
             for(int i = 0;i < 10 ;i++){
                 if(Characters.get(i).getX() != board.blocks[i].getX_cordinate() * 60 || Characters.get(i).getY() != board.blocks[i].getY_cordinate() * 60){

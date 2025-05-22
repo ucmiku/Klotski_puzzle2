@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="efebb8c9-f26c-4964-8fd9-4386004ec8b4" name="更改" comment="完善了继续游戏按钮，更新了io">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/12.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/music/music.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/music/music.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" afterDir="false" />
@@ -21,7 +21,6 @@
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/music/music.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/music/music.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
