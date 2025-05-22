@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.Random;
 
-public class BlockButton extends JComponent {
+public class BlockButton extends JComponent {  //角色方块的几个属性：名字，被选择的状态，长宽
     private final String name;
     private boolean selected;
     private final int width,height;
@@ -27,7 +27,7 @@ public class BlockButton extends JComponent {
     }
 
     @Override
-    protected void paintComponent(Graphics g){
+    protected void paintComponent(Graphics g){  //对于被选中的方块进行重新绘制
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 
