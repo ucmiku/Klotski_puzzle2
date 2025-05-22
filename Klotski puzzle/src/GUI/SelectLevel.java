@@ -10,9 +10,9 @@ import loginmodel.LoginSystem;
 public class SelectLevel extends JFrame {
     public static int level;
     public static int load=0;
-    private JButton l1 = new JButton("关卡1");
-    private JButton l2 = new JButton("关卡2");
-    private JButton l3 = new JButton("关卡3");
+    private JButton l1 = new JButton("缺兵少两");
+    private JButton l2 = new JButton("移形换影");
+    private JButton l3 = new JButton("科技革命");
     public static JButton l4 = new JButton("继续游戏");
     JPanel GamePanel;
     public SelectLevel(){
