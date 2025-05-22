@@ -14,7 +14,7 @@ public class Login extends JFrame {
     public static LoginSystem loginSystem = new LoginSystem();
     private static Board b = new Board();
     public static boolean IsVisitor;
-    protected static SelectLevel a = new SelectLevel();
+    protected static SelectLevel a;
 
 
 
@@ -141,6 +141,7 @@ public class Login extends JFrame {
                     JOptionPane.showMessageDialog(panel,"数据损坏，已创建新游戏！");
                 }
                 dispose();
+                a = new SelectLevel();
                 a.setVisible(true);
             }
         });

@@ -57,6 +57,7 @@ public class SelectLevel extends JFrame {
             Board b = new Board();
             b.setLoginSystem(Login.loginSystem);
             gameBoard = new GameBoard(b,Login.IsVisitor);
+            GameBoard.seconds = 300;
             gameBoard.setVisible(true);
         });
         l2.addActionListener(e -> {
@@ -66,6 +67,7 @@ public class SelectLevel extends JFrame {
             Board b = new Board();
             b.setLoginSystem(Login.loginSystem);
             gameBoard = new GameBoard(b,Login.IsVisitor);
+            GameBoard.seconds = 300;
             gameBoard.setVisible(true);
         });
         l3.addActionListener(e -> {
@@ -75,6 +77,7 @@ public class SelectLevel extends JFrame {
             Board b = new Board();
             b.setLoginSystem(Login.loginSystem);
             gameBoard = new GameBoard(b,Login.IsVisitor);
+            GameBoard.seconds = 300;
             gameBoard.setVisible(true);
         });
         if(Login.loginSystem.loginStatus==1){
