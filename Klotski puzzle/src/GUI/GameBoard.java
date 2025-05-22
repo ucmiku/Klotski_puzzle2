@@ -15,7 +15,6 @@ import java.util.Random;
 public class GameBoard extends JFrame {
     private static Board board;
     private BlockButton selectedButton;
-    private tool selectedTool;
     private JButton[] moveButton = new JButton[4];
     private JButton loadgame = new JButton("加载游戏");
     private JButton restartgame = new JButton("重新开始");
@@ -156,7 +155,7 @@ public class GameBoard extends JFrame {
                     board.blocks[i].getY_cordinate());
         }
 
-        if (SelectLevel.level==1){
+        if (SelectLevel.level==1){ //关卡1：随机删除一个除了曹操以外的方块
             Random rand = new Random();
             int index = rand.nextInt(8) + 1;
             for(int i = board.blocks[index].getY_cordinate();i <= board.blocks[index].getY_cordinate() + board.blocks[index].getY_length() - 1;i++)
@@ -168,6 +167,11 @@ public class GameBoard extends JFrame {
             Characters.get(index).setLocation(0,0);
             Characters.get(index).setVisible(false);
         }
+
+        if(SelectLevel.level == 2){//关卡2：改变顺序
+
+        }
+
         // 按钮事件监听
         withdraw.addActionListener(e -> {
             if (!board.getProcess().isEmpty()) {

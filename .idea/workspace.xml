@@ -4,7 +4,38 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efebb8c9-f26c-4964-8fd9-4386004ec8b4" name="更改" comment="测试上传下载" />
+    <list default="true" id="efebb8c9-f26c-4964-8fd9-4386004ec8b4" name="更改" comment="增加了一些注释">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/SelectLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/SelectLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/winpanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/winpanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/loginmodel/LoginSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/loginmodel/LoginSystem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/admin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/admin.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$images.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$images.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/loginmodel/LoginSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/loginmodel/LoginSystem.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,12 +67,12 @@
     &quot;assignee&quot;: &quot;ucmiku&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/ucmiku/Klotski_puzzlenew.git&quot;,
-    &quot;accountId&quot;: &quot;17924a58-298e-47d6-9d8d-06daeed3d3e5&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/ucmiku/Klotski_puzzle2.git",
+    "accountId": "17924a58-298e-47d6-9d8d-06daeed3d3e5"
   }
-}</component>
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -55,12 +86,18 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/16598/Desktop/Klotski puzzle",
     "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
     "应用程序.GUItest.executor": "Run",
     "应用程序.Main.executor": "Run"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory"
+    ]
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
@@ -112,7 +149,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747881940403</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="5.22版本">
+      <option name="closed" value="true" />
+      <created>1747882668917</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1747882668917</updated>
+    </task>
+    <task id="LOCAL-00007" summary="增加了一些注释">
+      <option name="closed" value="true" />
+      <created>1747882888461</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1747882888461</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -128,10 +181,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="更新了关卡，但是有一些bug" />
-    <MESSAGE value="增加了一些注释" />
     <MESSAGE value="5.22提交初始版本" />
     <MESSAGE value="测试上传下载" />
-    <option name="LAST_COMMIT_MESSAGE" value="测试上传下载" />
+    <MESSAGE value="5.22版本" />
+    <MESSAGE value="增加了一些注释" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加了一些注释" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

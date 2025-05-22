@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
 
+import game_logic.Board;
 import loginmodel.LoginSystem;
 
 public class SelectLevel extends JFrame {
@@ -53,21 +54,27 @@ public class SelectLevel extends JFrame {
             level=1;
             dispose();
             GameBoard gameBoard = null;
-            gameBoard = new GameBoard(Login.getB(),Login.IsVisitor);
+            Board b = new Board();
+            b.setLoginSystem(Login.loginSystem);
+            gameBoard = new GameBoard(b,Login.IsVisitor);
             gameBoard.setVisible(true);
         });
         l2.addActionListener(e -> {
             level=2;
             dispose();
             GameBoard gameBoard = null;
-            gameBoard = new GameBoard(Login.getB(),Login.IsVisitor);
+            Board b = new Board();
+            b.setLoginSystem(Login.loginSystem);
+            gameBoard = new GameBoard(b,Login.IsVisitor);
             gameBoard.setVisible(true);
         });
         l3.addActionListener(e -> {
             level=3;
             dispose();
             GameBoard gameBoard = null;
-            gameBoard = new GameBoard(Login.getB(),Login.IsVisitor);
+            Board b = new Board();
+            b.setLoginSystem(Login.loginSystem);
+            gameBoard = new GameBoard(b,Login.IsVisitor);
             gameBoard.setVisible(true);
         });
         if(Login.loginSystem.loginStatus==1){

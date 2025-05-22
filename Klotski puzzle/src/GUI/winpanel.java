@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import GUI.Login;
 
 public class winpanel extends JFrame {
     public void addjpg() {
@@ -33,6 +34,9 @@ public class winpanel extends JFrame {
                 JOptionPane.showMessageDialog(null, "你玩了"+minte+"分钟"+second+"秒,用了 "+step +"步");
                 JFrame frame = (JFrame)SwingUtilities.getWindowAncestor((Component)e.getSource());
                 frame.dispose();
+                Login.getA().setVisible(true);
+                BlockButton.i = 0;
+                Login.loginSystem.loginStatus = 2;
             }
         });
         panel.add(button);

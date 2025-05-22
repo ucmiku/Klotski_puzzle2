@@ -159,6 +159,7 @@ public class LoginSystem {
        rewrite();
        saveUserData(data1);
        saveUserData(data2);
+       loginStatus = 1;
     }
 
     public void reread(Board b) throws FileNotFoundException {
