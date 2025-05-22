@@ -13,7 +13,7 @@ public class SelectLevel extends JFrame {
     private JButton l1 = new JButton("关卡1");
     private JButton l2 = new JButton("关卡2");
     private JButton l3 = new JButton("关卡3");
-    private JButton l4 = new JButton("继续游戏");
+    public static JButton l4 = new JButton("继续游戏");
     JPanel GamePanel;
     public SelectLevel(){
         GamePanel = new JPanel() {
@@ -80,7 +80,7 @@ public class SelectLevel extends JFrame {
             GameBoard.seconds = 300;
             gameBoard.setVisible(true);
         });
-        if(Login.loginSystem.loginStatus==1){
+        if(Login.loginSystem.loginStatus == 1 && !winpanel.winstatus){
             gbConstraints.gridx = 3;
             gbConstraints.gridy = 3;
             GamePanel.add(l4,gbConstraints);

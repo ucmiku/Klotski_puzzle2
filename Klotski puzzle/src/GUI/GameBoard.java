@@ -38,13 +38,7 @@ public class GameBoard extends JFrame {
     String[] name = {"←","→","↑","↓"};
 
     public GameBoard(Board b, boolean IsVisitor)  {
-        if(SelectLevel.load !=0&& b.getLoginSystem().loginStatus!=0) {
-            board = b;
-        }else{//未读取游戏
-            board = b;
-            //board = new Board();
-           // board.getLoginSystem().loginStatus=2;
-        }
+        board = b;
         // 创建主游戏面板（带背景）
         GamePanel = new JPanel() {
             @Override
@@ -207,6 +201,8 @@ public class GameBoard extends JFrame {
         saveGame.addActionListener(e -> {
             b.getLoginSystem().save(board.getcordinate(), board.getProcess());
             JOptionPane.showMessageDialog(GamePanel, "已保存游戏记录！");
+            SelectLevel.l4.setVisible(true);
+            winpanel.winstatus = false;
             BoardPanel.requestFocus();
         });
 
@@ -386,6 +382,8 @@ public class GameBoard extends JFrame {
                 closingPanel.setVisible(true);
                 closingPanel.Yes.addActionListener(ev -> {
                     b.getLoginSystem().save(board.getcordinate(), board.getProcess());
+                    SelectLevel.l4.setVisible(true);
+                    winpanel.winstatus = false;
                     System.exit(0);
                 });
                 closingPanel.No.addActionListener(ev -> {

@@ -4,9 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import GUI.Login;
 
 public class winpanel extends JFrame {
+
+    public static boolean winstatus = false;
+
     public void addjpg() {
         this.setSize(600, 600);
         this.setLocationRelativeTo(null);
@@ -34,9 +36,10 @@ public class winpanel extends JFrame {
                 JOptionPane.showMessageDialog(null, "你玩了"+minte+"分钟"+second+"秒,用了 "+step +"步");
                 JFrame frame = (JFrame)SwingUtilities.getWindowAncestor((Component)e.getSource());
                 frame.dispose();
-                Login.getA().setVisible(true);
+                SelectLevel.l4.setVisible(false);
+                Login.getSelectLevel().setVisible(true);
                 BlockButton.i = 0;
-                Login.loginSystem.loginStatus = 2;
+                winstatus = true;
             }
         });
         panel.add(button);
