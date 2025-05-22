@@ -1,0 +1,51 @@
+package GUI;
+
+import javax.swing.*;
+import java.awt.*;
+import java.util.Random;
+
+public class BlockButton extends JComponent {
+    private final String name;
+    private boolean selected;
+    private final int width,height;
+    private Image image;
+    public static int i=0;
+
+    public BlockButton(int width, int height, boolean selected, String name) {
+        this.width = width;
+        this.height = height;
+        this.selected = selected;
+        this.name = name;
+        this.image=images.man[i];
+        i++;
+        setPreferredSize(new Dimension(width,height));
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g){
+        super.paintComponent(g);
+        Graphics2D g2d = (Graphics2D) g;
+
+        if (selected) {
+            g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.5f));
+            g2d.setColor(Color.GRAY);
+            g2d.fillRect(0, 0, getWidth(), getHeight());
+        }
+        g2d.fillRect(0, 0, width, height);
+        g2d.drawImage(image, 0, 0, getWidth(), getHeight(), this);
+    }
+
+    public void setSelected(boolean selected){
+        this.selected = selected;
+        repaint();
+    }
+
+    public boolean getSelected(){
+        return selected;
+    }
+}
