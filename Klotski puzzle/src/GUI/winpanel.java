@@ -28,10 +28,10 @@ public class winpanel extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {//监听button
-                int minte=(300-GameBoard.seconds)/60;
-                int second=(300-GameBoard.seconds)%60;
-                int step=GameBoard.getBoard().getSteps()+1;
-                JOptionPane.showMessageDialog(null, "你玩了"+minte+"分钟"+second+"秒,用了 "+step +"步");
+                int minte=(GameBoard.seconds)/60;
+                int second=(GameBoard.seconds)%60;
+                int step=GameBoard.getBoard().getProcess().size()+1;
+                JOptionPane.showMessageDialog(null, "你还剩"+minte+"分钟"+second+"秒,用了 "+step +"步");
                 JFrame frame = (JFrame)SwingUtilities.getWindowAncestor((Component)e.getSource());
                 frame.dispose();
                 SelectLevel.l4.setVisible(false);

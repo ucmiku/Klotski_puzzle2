@@ -4,13 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efebb8c9-f26c-4964-8fd9-4386004ec8b4" name="更改" comment="调整了SELECTLEVEL的frame大小">
-      <change afterPath="$PROJECT_DIR$/Klotski puzzle/src/game_logic/Boards.java" afterDir="false" />
+    <list default="true" id="efebb8c9-f26c-4964-8fd9-4386004ec8b4" name="更改" comment="更新了时间道具的机制">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/123.txt" beforeDir="false" afterPath="$PROJECT_DIR$/123.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/SelectLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/SelectLevel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/winpanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/winpanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/loginmodel/LoginSystem.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/loginmodel/LoginSystem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" afterDir="false" />
@@ -24,8 +24,11 @@
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/game_logic/Time.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/loginmodel/LoginSystem.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/loginmodel/LoginSystem.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/loginmodel/log.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -197,23 +200,7 @@
       <option name="project" value="LOCAL" />
       <updated>1747891870780</updated>
     </task>
-    <task id="LOCAL-00013" summary="修改了时间道具的机制（超过5分钟时，只可在本局游戏加时，重进游戏或者加载游戏不可使用多余5分钟的时间。&#10;为关卡增加了名字">
-      <option name="closed" value="true" />
-      <created>1747892433820</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1747892433820</updated>
-    </task>
-    <task id="LOCAL-00014" summary="调整了SELECTLEVEL的frame大小">
-      <option name="closed" value="true" />
-      <created>1747916962287</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1747916962287</updated>
-    </task>
-    <option name="localTasksCounter" value="15" />
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -238,9 +225,7 @@
     <MESSAGE value="更新了胜利之后切换为选关界面" />
     <MESSAGE value="更新了失败之后切换为选关界面" />
     <MESSAGE value="更新了时间道具的机制" />
-    <MESSAGE value="修改了时间道具的机制（超过5分钟时，只可在本局游戏加时，重进游戏或者加载游戏不可使用多余5分钟的时间。&#10;为关卡增加了名字" />
-    <MESSAGE value="调整了SELECTLEVEL的frame大小" />
-    <option name="LAST_COMMIT_MESSAGE" value="调整了SELECTLEVEL的frame大小" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新了时间道具的机制" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

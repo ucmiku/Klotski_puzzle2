@@ -22,12 +22,13 @@ public class GameBoard extends JFrame {
     private JButton saveGame = new JButton("保存数据");
     private JButton withdraw = new JButton("撤回");
     private ArrayList<BlockButton> Characters = new ArrayList<>();
-    private ArrayList<tool> Tools = new ArrayList<>();
+    public static ArrayList<tool> Tools = new ArrayList<>();
     private Image backgroundImage=images.backboard;
     private Image chessboardImage = images.chessboardImage;
     private Boards boards = new Boards();
 
     public static int seconds; // 时间
+    public static int seconds1;
     public Timer playtime;
     private JLabel timeLabel;
     private JLabel timeLabel2;
@@ -87,7 +88,7 @@ public class GameBoard extends JFrame {
         moveButton[3].setBounds(50,100,50,50);
 
         //道具组件
-        if(SelectLevel.level==3){
+        if(SelectLevel.level==3||SelectLevel.level==4){
         addToolBlock("Clock");
         addToolBlock("Hammer");
         }
@@ -222,7 +223,7 @@ public class GameBoard extends JFrame {
         restartgame.addActionListener(e -> {
             pauseGameTimer();
             board = new Board();
-            if(SelectLevel.level==3){
+            if(SelectLevel.level==3||SelectLevel.level==4){
             Tools.get(0).setUsed(false);
             Tools.get(1).setUsed(false);
             }
@@ -398,6 +399,7 @@ public class GameBoard extends JFrame {
         playtime = new Timer(1000, e -> {
             if (isRunning) {
                 seconds--;
+                seconds1++;
                 if (seconds <= 0) {
                     dispose();
                     losepanel panel = new losepanel();
@@ -442,6 +444,12 @@ public class GameBoard extends JFrame {
         tool button = new tool(60,60,name);
         button.setBounds(570,200 + 70 * tool.i,60,60);
         Tools.add(button);
+        if(tool.i==1&&SelectLevel.level==4){
+            button.setUsed(LoginSystem.tool1 != 1);
+        }else if(tool.i==2&&SelectLevel.level==4){
+            button.setUsed(LoginSystem.tool2 != 1);
+        }
+        System.out.println(tool.i);
             button.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {

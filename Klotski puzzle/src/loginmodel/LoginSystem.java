@@ -16,6 +16,9 @@ public class LoginSystem {
     private String password;
     public int loginStatus; // 0=未登录, 1=登录成功, 2=新用户注册
     public int time;
+    public static int level;
+    public static int tool1;
+    public static int tool2;
     public boolean ReadError;
     ArrayList<String> tmp;
 
@@ -71,8 +74,11 @@ public class LoginSystem {
         try (Scanner scanner = new Scanner(new File(DESKTOP_PATH + username + ".txt"))) {
             scanner.nextLine();
             time=Integer.parseInt(scanner.nextLine());
+            level=Integer.parseInt(scanner.nextLine());
+            tool1=Integer.parseInt(scanner.nextLine());
+            tool2=Integer.parseInt(scanner.nextLine());
             boolean[][] isavaiable = new boolean[7][6];
-            if (time<=0||time>300){
+            if (time<=0){
                 isValid = false;
             }
             for(Block bb : b.blocks){
@@ -146,10 +152,29 @@ public class LoginSystem {
             writer.write(password);
             writer.newLine();
             int time=GameBoard.seconds;
-            if (time<=0||time>300){
+            if (time<=0){
                 time=300;
             }
             writer.write(String.valueOf(time));
+            writer.newLine();
+            writer.write(String.valueOf(SelectLevel.level));
+            writer.newLine();
+            if(GameBoard.Tools.isEmpty()){
+                writer.write("1");
+                writer.newLine();
+                writer.write("1");
+            }else{
+            if(GameBoard.Tools.get(0).isUsed()){
+                writer.write("0");
+            }else{
+                writer.write("1");
+            }
+            writer.newLine();
+            if(GameBoard.Tools.get(1).isUsed()){
+                writer.write("0");
+            }else{
+                writer.write("1");
+            }}
         } catch (IOException e) {
             System.err.println("写入失败: " + e.getMessage());
         }

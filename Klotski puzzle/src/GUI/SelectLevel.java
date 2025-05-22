@@ -94,6 +94,9 @@ public class SelectLevel extends JFrame {
                 load=1;
                 dispose();
                 GameBoard gameBoard = null;
+                if(LoginSystem.level == 3||LoginSystem.level==4){
+                    level=4;
+                }
                 gameBoard = new GameBoard(Login.getB(),Login.IsVisitor);
                 gameBoard.setVisible(true);
             });
