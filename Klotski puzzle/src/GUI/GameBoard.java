@@ -202,7 +202,6 @@ public class GameBoard extends JFrame {
             b.getLoginSystem().save(board.getcordinate(), board.getProcess());
             JOptionPane.showMessageDialog(GamePanel, "已保存游戏记录！");
             SelectLevel.l4.setVisible(true);
-            winpanel.winstatus = false;
             BoardPanel.requestFocus();
         });
 
@@ -383,7 +382,6 @@ public class GameBoard extends JFrame {
                 closingPanel.Yes.addActionListener(ev -> {
                     b.getLoginSystem().save(board.getcordinate(), board.getProcess());
                     SelectLevel.l4.setVisible(true);
-                    winpanel.winstatus = false;
                     System.exit(0);
                 });
                 closingPanel.No.addActionListener(ev -> {

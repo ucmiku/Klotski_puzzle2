@@ -80,7 +80,7 @@ public class SelectLevel extends JFrame {
             GameBoard.seconds = 300;
             gameBoard.setVisible(true);
         });
-        if(Login.loginSystem.loginStatus == 1 && !winpanel.winstatus){
+        if(Login.loginSystem.loginStatus == 1){
             gbConstraints.gridx = 3;
             gbConstraints.gridy = 3;
             GamePanel.add(l4,gbConstraints);

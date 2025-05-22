@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class losepanel extends JFrame {
+
     public void addjpg() {
         this.setSize(600, 600);
         this.setLocationRelativeTo(null);
@@ -30,6 +31,9 @@ public class losepanel extends JFrame {
                 JOptionPane.showMessageDialog(null, "再接再厉");
                 JFrame frame = (JFrame)SwingUtilities.getWindowAncestor((Component)e.getSource());
                 frame.dispose();
+                SelectLevel.l4.setVisible(false);
+                Login.getSelectLevel().setVisible(true);
+                BlockButton.i = 0;
             }
         });
         panel.add(button);

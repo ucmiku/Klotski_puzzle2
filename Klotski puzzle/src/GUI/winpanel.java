@@ -7,8 +7,6 @@ import java.awt.event.ActionListener;
 
 public class winpanel extends JFrame {
 
-    public static boolean winstatus = false;
-
     public void addjpg() {
         this.setSize(600, 600);
         this.setLocationRelativeTo(null);
@@ -39,7 +37,6 @@ public class winpanel extends JFrame {
                 SelectLevel.l4.setVisible(false);
                 Login.getSelectLevel().setVisible(true);
                 BlockButton.i = 0;
-                winstatus = true;
             }
         });
         panel.add(button);
