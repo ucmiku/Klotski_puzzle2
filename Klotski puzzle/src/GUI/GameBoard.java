@@ -35,6 +35,7 @@ public class GameBoard extends JFrame {
     public static ArrayList<tool> Tools = new ArrayList<>();
     private Image backgroundImage=images.backboard;
     private Image chessboardImage = images.chessboardImage;
+    public static Board nowBoard;
 
     public static int seconds; // 时间
     public static int seconds1;

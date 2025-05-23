@@ -5,17 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="efebb8c9-f26c-4964-8fd9-4386004ec8b4" name="更改" comment="写了一半">
-      <change afterPath="$PROJECT_DIR$/Klotski puzzle/src/main1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/12.txt" beforeDir="false" afterPath="$PROJECT_DIR$/12.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/123.txt" beforeDir="false" afterPath="$PROJECT_DIR$/123.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/SelectLevel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/SelectLevel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/listenboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/listenboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/watch/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/watch/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/game_logic/AI.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/game_logic/AI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$12.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$13.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$14.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$4.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$5.class" afterDir="false" />
@@ -23,9 +27,16 @@
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$7.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$ClientHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/game_logic/AI.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/game_logic/AI.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,27 +86,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/16598/Desktop/Klotski puzzle",
-    "settings.editor.selected.configurable": "project.propVCSSupport.DirectoryMappings",
-    "应用程序.Client.executor": "Run",
-    "应用程序.GUItest.executor": "Run",
-    "应用程序.Main.executor": "Run",
-    "应用程序.Server.executor": "Run",
-    "应用程序.main1.executor": "Run"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/16598/Desktop/Klotski puzzle&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.DirectoryMappings&quot;,
+    &quot;应用程序.Client.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.GUItest.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.Main.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.Server.executor&quot;: &quot;Run&quot;,
+    &quot;应用程序.main1.executor&quot;: &quot;Run&quot;
   },
-  "keyToStringList": {
-    "ChangesTree.GroupingKeys": [
-      "directory"
+  &quot;keyToStringList&quot;: {
+    &quot;ChangesTree.GroupingKeys&quot;: [
+      &quot;directory&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="默认任务">

@@ -46,7 +46,7 @@ public class AI {
 
     }
 
-    private static Board deepCopyBoard(Board original){
+    public static Board deepCopyBoard(Board original){
         Board newBoard = new Board();
         for(int i = 0;i < 10;i ++){
             Block originalBlock = original.blocks[i];

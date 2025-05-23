@@ -168,9 +168,12 @@ public class listenboard extends JFrame {
             // 发送角色标识为观众（服务器端可忽略
             new PrintWriter(socket.getOutputStream(), true).println("viewer");
 
+            for(int i = 0;i < 10;i++){
+                if(board.blocks[i].getX_cordinate() * 60 != Characters.get(i).getX() || board.blocks[i].getY_cordinate() * 60 != Characters.get(i).getY())animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
+            }
+
             String move;
             while ((move = reader.readLine()) != null) {
-                System.out.println(move);
                 String[] parts = move.split(",");
                 if (parts.length != 2) continue;
 
@@ -178,21 +181,19 @@ public class listenboard extends JFrame {
                 char direction = parts[1].charAt(0);
 
 
-                for (Block block : board.blocks) {
-                    for(BlockButton a:Characters){
-                    if (block.getName().equals(characterName)) {
-                        if (block.getName().equals(a.getName())) {
-                        board.movement(direction, block);
-                        if(block.getX_cordinate() * 60 != a.getX() || block.getY_cordinate() * 60 != a.getY())animateMove(a,block.getX_cordinate() * 60,block.getY_cordinate() * 60);
-                        else animateMove2(a,block.getX_cordinate() * 60,block.getY_cordinate() * 60,direction);
+                for (int i = 0;i < 10;i ++) {
+                    if (board.blocks[i].getName().equals(characterName)) {
+                        board.movement(direction, board.blocks[i]);
+                        if(board.blocks[i].getX_cordinate() * 60 != Characters.get(i).getX() || board.blocks[i].getY_cordinate() * 60 != Characters.get(i).getY())animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
+                        else animateMove2(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60,direction);
                         if (board.isVictory()) {
                             winpanel frame = new winpanel();
                             frame.addjpg();
                             pauseGameTimer();
                             dispose();
-                        }}
+                        }
                         break;
-                    }}
+                    }
                 }
             }
         } catch (IOException e) {
