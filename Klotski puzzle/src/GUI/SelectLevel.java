@@ -31,11 +31,11 @@ public class SelectLevel extends JFrame {
         };
         GridBagLayout gbLayout = new GridBagLayout();
         GamePanel.setLayout(gbLayout);
-        GamePanel.setBounds(0, 0, 450, 250);
+        GamePanel.setBounds(0, 0, 550, 250);
         setContentPane(GamePanel);
 
         setTitle("选关界面");
-        setSize(450,250);
+        setSize(550,250);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -54,6 +54,10 @@ public class SelectLevel extends JFrame {
         gbConstraints.gridx = 2;
         gbConstraints.gridy = 3;
         GamePanel.add(l3,gbConstraints);
+
+        gbConstraints.gridx = 3;
+        gbConstraints.gridy = 3;
+        GamePanel.add(l5,gbConstraints);
 
         l1.addActionListener(e -> {
             level=1;
@@ -95,7 +99,7 @@ public class SelectLevel extends JFrame {
             listenboard.setVisible(true);
         });
         if(Login.loginSystem.loginStatus == 1){
-            gbConstraints.gridx = 3;
+            gbConstraints.gridx = 4;
             gbConstraints.gridy = 3;
             GamePanel.add(l4,gbConstraints);
 
