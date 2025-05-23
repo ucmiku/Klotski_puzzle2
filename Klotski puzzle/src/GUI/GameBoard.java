@@ -253,25 +253,42 @@ public class GameBoard extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 ArrayList<String> str = (ArrayList<String>) AI.solve(board);
                 str.removeLast();
-                for(String solution : str){
-                    char[] c = solution.toCharArray();
-                    StringBuilder sb = new StringBuilder();
-                    for(char c1 : c){
-                        if(c1 == ',')break;
-                        sb.append(c1);
-                    }
-                    String characterName = sb.toString();
-                    char direction = solution.charAt(solution.length() - 1);
-                    for (int i = 0;i < 10;i ++) {
-                        if (Characters.get(i).getName().equals(characterName)) {
-                            board.movement(direction,board.blocks[i]);
-                            animateMoveSlow(Characters.get(i),board.blocks[i].getX_cordinate() * 60,
-                                    board.blocks[i].getY_cordinate() * 60);
+                Timer solutionTimer = new Timer(300, new ActionListener() {
+                    private int currentStep = 0;
+
+                    @Override
+                    public void actionPerformed(ActionEvent timerEvent) {
+                        if (currentStep >= str.size()) {
+                            ((Timer)timerEvent.getSource()).stop();
+                            return;
                         }
+
+                        String solution = str.get(currentStep++);
+                        char[] c = solution.toCharArray();
+                        StringBuilder sb = new StringBuilder();
+                        for(char c1 : c){
+                            if(c1 == ',') break;
+                            sb.append(c1);
+                        }
+                        String characterName = sb.toString();
+                        char direction = solution.charAt(solution.length() - 1);
+
+                        for (int i = 0; i < 10; i++) {
+                            if (Characters.get(i).getName().equals(characterName)) {
+                                board.movement(direction, board.blocks[i]);
+                                animateMoveSlow(Characters.get(i),
+                                        board.blocks[i].getX_cordinate() * 60,
+                                        board.blocks[i].getY_cordinate() * 60);
+                                break;
+                            }
+                        }
+
+                        BoardPanel.repaint();
+                        BoardPanel.requestFocus();
                     }
-                    BoardPanel.repaint();
-                    BoardPanel.requestFocus();
-                }
+                });
+
+                solutionTimer.start();
                 BoardPanel.requestFocus();
             }
         });
@@ -609,7 +626,6 @@ public class GameBoard extends JFrame {
         //总移动距离
         int totalXmove = finalX - startX;
         int totalYmove = finalY - startY;
-
 
         new Timer(animationDelay, new ActionListener() {
             private int currentStep = 0;

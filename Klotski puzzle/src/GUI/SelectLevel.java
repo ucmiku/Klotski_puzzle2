@@ -15,6 +15,7 @@ public class SelectLevel extends JFrame {
     private JButton l1 = new JButton("缺兵少两");
     private JButton l2 = new JButton("移形换影");
     private JButton l3 = new JButton("科技革命");
+    private JButton l5 = new JButton("坐观天下");
     public static JButton l4 = new JButton("继续游戏");
     private Boards boards = new Boards();
 
@@ -84,6 +85,14 @@ public class SelectLevel extends JFrame {
             gameBoard = new GameBoard(b,Login.IsVisitor);
             GameBoard.seconds = 300;
             gameBoard.setVisible(true);
+        });
+        l5.addActionListener(e -> {
+            dispose();
+            listenboard listenboard=null;
+            Board b = new Board();
+            b.setLoginSystem(Login.loginSystem);
+            listenboard = new listenboard(b,Login.IsVisitor);
+            listenboard.setVisible(true);
         });
         if(Login.loginSystem.loginStatus == 1){
             gbConstraints.gridx = 3;
