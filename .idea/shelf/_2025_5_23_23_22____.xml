@@ -1,0 +1,19 @@
+<changelist name="在进行更新之前于_2025_5_23_23_22_取消提交了更改_[更改]" date="1748013756950" recycled="false" toDelete="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_5_23_23_22_取消提交了更改_[更改]/shelved.patch" />
+  <option name="DESCRIPTION" value="在进行更新之前于 2025/5/23 23:22 取消提交了更改 [更改]" />
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Klotski puzzle/GUI/GameBoard.class" />
+    <option name="AFTER_PATH" value="out/production/Klotski puzzle/GUI/GameBoard.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_5_23_23_22_取消提交了更改_[更改]/GameBoard.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Klotski puzzle/GUI/SelectLevel$1.class" />
+    <option name="AFTER_PATH" value="out/production/Klotski puzzle/GUI/SelectLevel$1.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_5_23_23_22_取消提交了更改_[更改]/SelectLevel$1.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="out/production/Klotski puzzle/GUI/SelectLevel.class" />
+    <option name="AFTER_PATH" value="out/production/Klotski puzzle/GUI/SelectLevel.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/在进行更新之前于_2025_5_23_23_22_取消提交了更改_[更改]/SelectLevel.class" />
+  </binary>
+</changelist>
