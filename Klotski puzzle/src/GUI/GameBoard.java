@@ -1,5 +1,6 @@
 package GUI;
 
+import game_logic.AI;
 import game_logic.Board;
 import game_logic.Block;
 import game_logic.Boards;
@@ -12,6 +13,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Random;
 
 public class GameBoard extends JFrame {
@@ -22,6 +24,7 @@ public class GameBoard extends JFrame {
     private JButton restartgame = new JButton("重新开始");
     private JButton saveGame = new JButton("保存数据");
     private JButton withdraw = new JButton("撤回");
+    private JButton AutoSolution = new JButton("召唤神力");
     private ArrayList<BlockButton> Characters = new ArrayList<>();
     public static ArrayList<tool> Tools = new ArrayList<>();
     private Image backgroundImage=images.backboard;
@@ -88,9 +91,13 @@ public class GameBoard extends JFrame {
         moveButton[3].setBounds(50,100,50,50);
 
         //道具组件
+        AutoSolution.setBounds(570, 110, 100, 50);
+        AutoSolution.setForeground(Color.BLUE);
+
         if(SelectLevel.level==3||SelectLevel.level==4){
         addToolBlock("Clock");
         addToolBlock("Hammer");
+        GamePanel.add(AutoSolution);
         }
 
         for(JButton jButton : moveButton){
@@ -239,6 +246,34 @@ public class GameBoard extends JFrame {
             }
             restartGameTimer();
             BoardPanel.requestFocus();
+        });
+
+        AutoSolution.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<String> str = (ArrayList<String>) AI.solve(board);
+                str.removeLast();
+                for(String solution : str){
+                    char[] c = solution.toCharArray();
+                    StringBuilder sb = new StringBuilder();
+                    for(char c1 : c){
+                        if(c1 == ',')break;
+                        sb.append(c1);
+                    }
+                    String characterName = sb.toString();
+                    char direction = solution.charAt(solution.length() - 1);
+                    for (int i = 0;i < 10;i ++) {
+                        if (Characters.get(i).getName().equals(characterName)) {
+                            board.movement(direction,board.blocks[i]);
+                            animateMoveSlow(Characters.get(i),board.blocks[i].getX_cordinate() * 60,
+                                    board.blocks[i].getY_cordinate() * 60);
+                        }
+                    }
+                    BoardPanel.repaint();
+                    BoardPanel.requestFocus();
+                }
+                BoardPanel.requestFocus();
+            }
         });
 
         //左方向键
@@ -537,6 +572,39 @@ public class GameBoard extends JFrame {
         final int startY = button.getY();
         final int animationSteps = 10;
         final int animationDelay = 4;
+
+        //总移动距离
+        int totalXmove = finalX - startX;
+        int totalYmove = finalY - startY;
+
+
+        new Timer(animationDelay, new ActionListener() {
+            private int currentStep = 0;
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int x;
+                int y;
+                float progress = easeOutQuad((float)++currentStep / animationSteps);
+                x = startX + (int)(totalXmove * progress);
+                y = startY + (int)(totalYmove * progress);
+                button.setLocation(x,y);
+                BoardPanel.repaint();
+                if(currentStep >= animationSteps){
+                    button.setLocation(finalX,finalY);
+                    ((Timer)e.getSource()).stop();
+                    BoardPanel.repaint();
+                }
+            }
+        }).start();
+    }
+
+    private void animateMoveSlow(BlockButton button,int finalX,int finalY){
+
+        final int startX = button.getX();
+        final int startY = button.getY();
+        final int animationSteps = 10;
+        final int animationDelay = 40;
 
         //总移动距离
         int totalXmove = finalX - startX;

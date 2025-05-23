@@ -7,13 +7,14 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 public class Board {
-    private boolean[][] is_available = new boolean[7][6];//为了后续判断是否能移动，建立比棋盘大一格的判断二维数组
+    boolean[][] is_available = new boolean[7][6];//为了后续判断是否能移动，建立比棋盘大一格的判断二维数组
     public Block[] blocks = new Block[10];
     private ArrayList<String> process = new ArrayList<>();
     private LoginSystem loginSystem;
     private String WithdrawName;
     private int WithdrawBlockNumber;
     private int steps = process.size();
+    boolean can_be_moved;
 
     public int getWithdrawBlockNumber() {
         return WithdrawBlockNumber;
@@ -70,23 +71,6 @@ public class Board {
         is_available[5][3] = true;//棋盘刚开始的状态，下面两个空位
     }//初始化棋盘，is_available用于记录该位置是否为空，true表示为空
 
-    public void getBoard(){
-        String[][] str = new String[7][6];//储存每一个方块对应的角色名字
-        for(Block b : blocks){
-            for(int i = b.getY_cordinate();i <= b.getY_cordinate() + b.getY_length() - 1;i++)
-                for(int j = b.getX_cordinate();j <= b.getX_cordinate() + b.getX_length() - 1;j++){
-                    str[i][j] = b.getName();
-                }
-        }
-        for(int i = 1;i <= 5;i++){
-            for(int j = 1;j <= 4;j++){
-                System.out.printf("%-15s",str[i][j]);
-            }
-            System.out.println();
-        }
-    }
-
-
     public ArrayList<String> getcordinate(){
         ArrayList<String> tmpstrs = new ArrayList<>();
         for(Block b : blocks){
@@ -98,6 +82,34 @@ public class Board {
         return tmpstrs;
     }
 
+    public boolean canMoveLeft(Block block){
+        for(int i = block.getY_cordinate(); i <= block.getY_cordinate() + block.getY_length() - 1; i++){
+            if(!is_available[i][block.getX_cordinate() - 1])return false;//检查左边是否有空位
+        }
+        return true;
+    }
+
+    public boolean canMoveUp(Block block){
+        for(int i = block.getX_cordinate(); i <= block.getX_length() + block.getX_cordinate() - 1; i++){
+            if(!is_available[block.getY_cordinate() - 1][i])return false;//检查上边是否有空位
+        }
+        return true;
+    }
+
+    public boolean canMoveRight(Block block){
+        for(int i = block.getY_cordinate(); i <= block.getY_cordinate() + block.getY_length() - 1; i++){
+            if(!is_available[i][block.getX_cordinate() + block.getX_length()])return false;//检查右边是否有空位
+        }
+        return true;
+    }
+
+    public boolean canMoveDown(Block block){
+        for(int i = block.getX_cordinate(); i <= block.getX_length() + block.getX_cordinate() - 1; i++){
+            if(!is_available[block.getY_cordinate() + block.getY_length()][i])return false;//检查下边是否有空位
+        }
+        return true;
+    }
+
     public void movement(char checkdirection,Block targetblock){
         Block block = new Block();
 
@@ -107,14 +119,13 @@ public class Board {
             }
         }
 
-        boolean can_be_moved = true;
+        can_be_moved = true;
 
         if(checkdirection == 'l'){//判断移动以及方块的移动
             for(int i = block.getY_cordinate(); i <= block.getY_cordinate() + block.getY_length() - 1; i++){
                 if(!is_available[i][block.getX_cordinate() - 1])can_be_moved = false;//检查左边是否有空位
             }
-            if(!can_be_moved) System.out.println("The block can't be moved");
-            else {
+            if(can_be_moved) {
                 for(int i = block.getY_cordinate(); i <= block.getY_cordinate() + block.getY_length() - 1; i++){
                     is_available[i][block.getX_cordinate() - 1] = false;
                     is_available[i][block.getX_cordinate() + block.getX_length() - 1] = true;//移动后左边被占用，右边空出来
@@ -127,8 +138,7 @@ public class Board {
             for(int i = block.getX_cordinate(); i <= block.getX_length() + block.getX_cordinate() - 1; i++){
                 if(!is_available[block.getY_cordinate() - 1][i])can_be_moved = false;//检查上边是否有空位
             }
-            if(!can_be_moved) System.out.println("The block can't be moved");
-            else {
+            if(can_be_moved){
                 for (int i = block.getX_cordinate(); i <= block.getX_cordinate() + block.getX_length() - 1; i++) {
                     is_available[block.getY_cordinate() - 1][i] = false;
                     is_available[block.getY_cordinate() + block.getY_length() - 1][i] = true;//移动后上边被占用，下边空出来
@@ -141,8 +151,7 @@ public class Board {
             for(int i = block.getX_cordinate(); i <= block.getX_length() + block.getX_cordinate() - 1; i++){
                 if(!is_available[block.getY_cordinate() + block.getY_length()][i])can_be_moved = false;//检查下边是否有空位
             }
-            if(!can_be_moved) System.out.println("The block can't be moved");
-            else {
+            if(can_be_moved){
                 for (int i = block.getX_cordinate(); i <= block.getX_length() + block.getX_cordinate() - 1; i++) {
                     is_available[block.getY_cordinate() + block.getY_length()][i] = false;
                     is_available[block.getY_cordinate()][i] = true;//移动后下边被占用，上边空出来
@@ -155,8 +164,7 @@ public class Board {
             for(int i = block.getY_cordinate(); i <= block.getY_cordinate() + block.getY_length() - 1; i++){
                 if(!is_available[i][block.getX_cordinate() + block.getX_length()])can_be_moved = false;//检查右边是否有空位
             }
-            if(!can_be_moved) System.out.println("The block can't be moved");
-            else {
+            if(can_be_moved) {
                 for(int i = block.getY_cordinate(); i <= block.getY_cordinate() + block.getY_length() - 1; i++){
                     is_available[i][block.getX_cordinate() + block.getX_length()] = false;
                     is_available[i][block.getX_cordinate()] = true;//移动后右边被占用，左边空出来
