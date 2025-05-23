@@ -1,30 +1,28 @@
+// listenboard.java（简化版观看界面）
 package GUI;
 
-import game_logic.AI;
-import game_logic.Board;
 import game_logic.Block;
-import game_logic.Boards;
+import game_logic.Board;
 import loginmodel.LoginSystem;
-import music.music;
-import javax.swing.Timer;
+
 import javax.swing.*;
-import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileNotFoundException;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class listenboard extends JFrame {
+    private JPanel GamePanel;
+    private BlockButton[] blocks = new BlockButton[10]; // 假设最多10个方块
+    private PrintWriter playerWriter;
     private static Board board;
     private BlockButton selectedButton;
     private JButton[] moveButton = new JButton[4];
-    private JButton loadgame = new JButton("加载游戏");
-    private JButton restartgame = new JButton("重新开始");
-    private JButton saveGame = new JButton("保存数据");
-    private JButton withdraw = new JButton("撤回");
-    private JButton AutoSolution = new JButton("召唤神力");
     private ArrayList<BlockButton> Characters = new ArrayList<>();
     public static ArrayList<tool> Tools = new ArrayList<>();
     private Image backgroundImage=images.backboard;
@@ -38,10 +36,18 @@ public class listenboard extends JFrame {
     private boolean isRunning = false;
 
     JPanel BoardPanel = new JPanel(null);
-    JPanel GamePanel;
     JPanel MovePanel = new JPanel(null);
     JPanel ChessBoard = new JPanel(null);
-    public listenboard(Board b, boolean IsVisitor){
+    String[] name = {"←","→","↑","↓"};
+
+    public listenboard(Board b, boolean isVisitor) {
+        setTitle("在线观看");
+        setSize(750, 450);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        setLocationRelativeTo(null);
+
+        board = b;
+        // 创建主游戏面板（带背景）
         GamePanel = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
@@ -75,24 +81,11 @@ public class listenboard extends JFrame {
         MovePanel.setBounds(400,50,150,150);
         MovePanel.setOpaque(false);
 
-        moveButton[0].setBounds(0,50,50,50);
-        moveButton[1].setBounds(100,50,50,50);
-        moveButton[2].setBounds(50,0,50,50);
-        moveButton[3].setBounds(50,100,50,50);
-
-        //道具组件
-        AutoSolution.setBounds(570, 110, 100, 50);
-        AutoSolution.setForeground(Color.BLUE);
-
         if(SelectLevel.level==3||SelectLevel.level==4){
             addToolBlock("Clock");
             addToolBlock("Hammer");
-            GamePanel.add(AutoSolution);
         }
 
-        for(JButton jButton : moveButton){
-            MovePanel.add(jButton);
-        }
 
         GamePanel.add(MovePanel);
         MovePanel.setVisible(true);
@@ -101,30 +94,6 @@ public class listenboard extends JFrame {
         setSize(new Dimension(750, 450));
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
-
-        // 设置按钮
-        saveGame.setBounds(330, 270, 100, 50);
-        saveGame.setForeground(Color.BLUE);
-        if (!IsVisitor) GamePanel.add(saveGame);
-
-        withdraw.setBounds(450, 270, 100, 50);
-        withdraw.setForeground(Color.BLUE);
-        GamePanel.add(withdraw);
-
-        restartgame.setBounds(450,340,100,50);
-        restartgame.setForeground(Color.BLUE);
-        GamePanel.add(restartgame);
-
-        loadgame.setBounds(330,340,100,50);
-        loadgame.setForeground(Color.BLUE);
-        if (!IsVisitor) GamePanel.add(loadgame);
-
-        // 提示标签
-        tips.setBounds(330, 230, 400, 30);
-        tips.setForeground(Color.WHITE);
-        tips.setFont(new Font("宋体", Font.BOLD, 15));
-        tips.setOpaque(false);
-        GamePanel.add(tips);
 
         // 时间标签
         timeLabel = new JLabel("00:00");
@@ -160,6 +129,74 @@ public class listenboard extends JFrame {
                     board.blocks[i].getY_length(),
                     board.blocks[i].getX_cordinate(),
                     board.blocks[i].getY_cordinate());
+        }
+
+        // 连接服务器作为观众
+        new Thread(this::connectAsViewer).start();
+
+        addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                // 关闭连接
+                dispose();
+            }
+        });
+        playtime = new Timer(1000, e -> {
+            if (isRunning) {
+                seconds--;
+                seconds1++;
+                if (seconds <= 0) {
+                    dispose();
+                    losepanel panel = new losepanel();
+                    panel.addjpg();
+                    pauseGameTimer();
+                }
+                updateTimeLabel();
+            }
+        });
+
+        startGameTimer();
+        BoardPanel.setFocusable(true);
+        BoardPanel.requestFocus();
+        GamePanel.add(ChessBoard);
+        ChessBoard.setVisible(true);
+    }
+
+    private void connectAsViewer() {
+        try (Socket socket = new Socket("localhost", 12345);
+             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
+            // 发送角色标识为观众（服务器端可忽略
+            new PrintWriter(socket.getOutputStream(), true).println("viewer");
+
+            String move;
+            while ((move = reader.readLine()) != null) {
+                System.out.println(move);
+                String[] parts = move.split(",");
+                if (parts.length != 2) continue;
+
+                String characterName = parts[0];
+                char direction = parts[1].charAt(0);
+
+
+                for (Block block : board.blocks) {
+                    for(BlockButton a:Characters){
+                    if (block.getName().equals(characterName)) {
+                        if (block.getName().equals(a.getName())) {
+                        board.movement(direction, block);
+                        if(block.getX_cordinate() * 60 != a.getX() || block.getY_cordinate() * 60 != a.getY())animateMove(a,block.getX_cordinate() * 60,block.getY_cordinate() * 60);
+                        else animateMove2(a,block.getX_cordinate() * 60,block.getY_cordinate() * 60,direction);
+                        if (board.isVictory()) {
+                            winpanel frame = new winpanel();
+                            frame.addjpg();
+                            pauseGameTimer();
+                            dispose();
+                        }}
+                        break;
+                    }}
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     private void addChessBlock(String name, int width, int height, int x, int y) {

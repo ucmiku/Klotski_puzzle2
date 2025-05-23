@@ -6,17 +6,23 @@ import game_logic.Block;
 import game_logic.Boards;
 import loginmodel.LoginSystem;
 import music.music;
+
 import javax.swing.Timer;
 import javax.swing.*;
 import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.net.ConnectException;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
 
 public class GameBoard extends JFrame {
+    private ServerSocket serverSocket;
+    private ArrayList<PrintWriter> clientWriters = new ArrayList<>();
     private static Board board;
     private BlockButton selectedButton;
     private JButton[] moveButton = new JButton[4];
@@ -44,6 +50,7 @@ public class GameBoard extends JFrame {
     String[] name = {"←","→","↑","↓"};
 
     public GameBoard(Board b, boolean IsVisitor)  {
+        startServer();
         board = b;
         // 创建主游戏面板（带背景）
         GamePanel = new JPanel() {
@@ -95,9 +102,9 @@ public class GameBoard extends JFrame {
         AutoSolution.setForeground(Color.BLUE);
 
         if(SelectLevel.level==3||SelectLevel.level==4){
-        addToolBlock("Clock");
-        addToolBlock("Hammer");
-        GamePanel.add(AutoSolution);
+            addToolBlock("Clock");
+            addToolBlock("Hammer");
+            GamePanel.add(AutoSolution);
         }
 
         for(JButton jButton : moveButton){
@@ -107,7 +114,7 @@ public class GameBoard extends JFrame {
         GamePanel.add(MovePanel);
         MovePanel.setVisible(true);
 
-        setTitle("三国华容道");
+        setTitle("三国华容道 - 服务器");
         setSize(new Dimension(750, 450));
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setLocationRelativeTo(null);
@@ -172,7 +179,6 @@ public class GameBoard extends JFrame {
                     board.blocks[i].getY_cordinate());
         }
 
-
         // 按钮事件监听
         withdraw.addActionListener(e -> {
             if (!board.getProcess().isEmpty()) {
@@ -199,6 +205,7 @@ public class GameBoard extends JFrame {
                     }
                 }
                 BoardPanel.repaint();
+                broadcastMove(board.getWithdrawName() + ",w"); // 广播撤回操作
             } else {
                 JOptionPane.showMessageDialog(GamePanel, "无可撤回的步数！");
             }
@@ -221,6 +228,7 @@ public class GameBoard extends JFrame {
                 }
                 startGameTimer();
                 updateTimeLabel();
+                broadcastGameState(); // 广播游戏状态
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -231,8 +239,8 @@ public class GameBoard extends JFrame {
             pauseGameTimer();
             board = new Board();
             if(SelectLevel.level==3||SelectLevel.level==4){
-            Tools.get(0).setUsed(false);
-            Tools.get(1).setUsed(false);
+                Tools.get(0).setUsed(false);
+                Tools.get(1).setUsed(false);
             }
             if(SelectLevel.level == 2){
                 Random rand = new Random();
@@ -245,6 +253,7 @@ public class GameBoard extends JFrame {
                 }
             }
             restartGameTimer();
+            broadcastGameState(); // 广播游戏状态
             BoardPanel.requestFocus();
         });
 
@@ -279,6 +288,7 @@ public class GameBoard extends JFrame {
                                 animateMoveSlow(Characters.get(i),
                                         board.blocks[i].getX_cordinate() * 60,
                                         board.blocks[i].getY_cordinate() * 60);
+                                broadcastMove(characterName + "," + direction); // 广播移动
                                 break;
                             }
                         }
@@ -306,10 +316,12 @@ public class GameBoard extends JFrame {
                         board.movement('l', block);
                         if(block.getX_cordinate() * 60 != selectedButton.getX() || block.getY_cordinate() * 60 != selectedButton.getY())animateMove(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60);
                         else animateMove2(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60,'l');
+                        broadcastMove(selectedButton.getName() + ",l"); // 广播移动
                         if (board.isVictory()) {
                             winpanel frame = new winpanel();
                             frame.addjpg();
                             pauseGameTimer();
+                            broadcastVictory(); // 广播胜利
                             dispose();
                         }
                         break;
@@ -332,10 +344,12 @@ public class GameBoard extends JFrame {
                         board.movement('r', block);
                         if(block.getX_cordinate() * 60 != selectedButton.getX() || block.getY_cordinate() * 60 != selectedButton.getY())animateMove(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60);
                         else animateMove2(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60,'r');
+                        broadcastMove(selectedButton.getName() + ",r"); // 广播移动
                         if (board.isVictory()) {
                             winpanel frame = new winpanel();
                             frame.addjpg();
                             pauseGameTimer();
+                            broadcastVictory(); // 广播胜利
                             dispose();
                         }
                         break;
@@ -358,10 +372,12 @@ public class GameBoard extends JFrame {
                         board.movement('u', block);
                         if(block.getX_cordinate() * 60 != selectedButton.getX() || block.getY_cordinate() * 60 != selectedButton.getY())animateMove(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60);
                         else animateMove2(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60,'u');
+                        broadcastMove(selectedButton.getName() + ",u"); // 广播移动
                         if (board.isVictory()) {
                             winpanel frame = new winpanel();
                             frame.addjpg();
                             pauseGameTimer();
+                            broadcastVictory(); // 广播胜利
                             dispose();
                         }
                         break;
@@ -384,10 +400,12 @@ public class GameBoard extends JFrame {
                         board.movement('d', block);
                         if(block.getX_cordinate() * 60 != selectedButton.getX() || block.getY_cordinate() * 60 != selectedButton.getY())animateMove(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60);
                         else animateMove2(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60,'d');
+                        broadcastMove(selectedButton.getName() + ",d"); // 广播移动
                         if (board.isVictory()) {
                             winpanel frame = new winpanel();
                             frame.addjpg();
                             pauseGameTimer();
+                            broadcastVictory(); // 广播胜利
                             dispose();
                         }
                         break;
@@ -416,12 +434,14 @@ public class GameBoard extends JFrame {
                 for (Block block : board.blocks) {
                     if (block.getName().equals(selectedButton.getName())) {
                         board.movement(c, block);
+                        broadcastMove(selectedButton.getName() + "," + c); // 广播移动
                         if(block.getX_cordinate() * 60 != selectedButton.getX() || block.getY_cordinate() * 60 != selectedButton.getY())animateMove(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60);
                         else animateMove2(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60,c);
                         if (board.isVictory()) {
                             winpanel frame = new winpanel();
                             frame.addjpg();
                             pauseGameTimer();
+                            broadcastVictory(); // 广播胜利
                             dispose();
                         }
                         break;
@@ -458,6 +478,7 @@ public class GameBoard extends JFrame {
                     losepanel panel = new losepanel();
                     panel.addjpg();
                     pauseGameTimer();
+                    broadcastDefeat(); // 广播失败
                 }
                 updateTimeLabel();
             }
@@ -470,6 +491,101 @@ public class GameBoard extends JFrame {
         ChessBoard.setVisible(true);
     }
 
+    // 服务器相关方法
+    private void startServer() {
+        new Thread(() -> {
+            try {
+                serverSocket = new ServerSocket(12345);
+                System.out.println("服务器已启动，等待客户端连接...");
+
+                while (true) {
+                    Socket clientSocket = serverSocket.accept();
+                    System.out.println("客户端连接: " + clientSocket.getInetAddress());
+
+                    PrintWriter writer = new PrintWriter(clientSocket.getOutputStream(), true);
+                    clientWriters.add(writer);
+
+                    new Thread(new ClientHandler(clientSocket)).start();
+
+                    // 发送初始游戏状态
+                    broadcastGameState();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    private class ClientHandler implements Runnable {
+        private Socket clientSocket;
+        private BufferedReader reader;
+
+        public ClientHandler(Socket socket) {
+            try {
+                this.clientSocket = socket;
+                this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        @Override
+        public void run() {
+            try {
+                String message;
+                while ((message = reader.readLine()) != null) {
+                    // 处理客户端消息
+                    System.out.println("收到客户端消息: " + message);
+                }
+            } catch (IOException e) {
+                System.out.println("客户端断开连接");
+            } finally {
+                try {
+                    clientSocket.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    // 广播消息给所有客户端
+    private void broadcast(String message) {
+        for (PrintWriter writer : clientWriters) {
+            writer.println(message);
+        }
+    }
+
+    // 广播游戏状态
+    private void broadcastGameState() {
+        StringBuilder state = new StringBuilder();
+        for (Block block : board.blocks) {
+            state.append(block.getX_cordinate()).append(",").append(block.getY_cordinate()).append(";");
+        }
+        broadcast(state.toString());
+    }
+
+    // 广播移动
+    private void broadcastMove(String move) {
+        broadcast(move);
+    }
+
+    // 广播胜利
+    private void broadcastVictory() {
+        broadcast("v");
+    }
+
+    // 广播失败
+    private void broadcastDefeat() {
+        broadcast("d");
+    }
+
+    // 广播时间
+    private void broadcastTime() {
+        broadcast(String.valueOf(seconds));
+    }
+
+    // 以下是原有的非服务器相关方法，保持不变
     private void addChessBlock(String name, int width, int height, int x, int y) {
         BlockButton button = new BlockButton(width * 60, height * 60, false, name);
         button.setBounds(0,0,width * 60,height * 60);
@@ -503,27 +619,27 @@ public class GameBoard extends JFrame {
             button.setUsed(LoginSystem.tool2 != 1);
         }
         System.out.println(tool.i);
-            button.addMouseListener(new MouseAdapter() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    GamePanel.requestFocus();
-                    if(!button.isUsed()){
-                        switch (name){
-                            case "Clock" -> {
-                                button.setUsed(true);
-                                ToolClock();
-                                button.repaint();
-                            }
-                            case "Hammer" -> {
-                                button.setUsed(true);
-                                deleteZu();
-                                button.repaint();
-                            }
+        button.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                GamePanel.requestFocus();
+                if(!button.isUsed()){
+                    switch (name){
+                        case "Clock" -> {
+                            button.setUsed(true);
+                            ToolClock();
+                            button.repaint();
+                        }
+                        case "Hammer" -> {
+                            button.setUsed(true);
+                            deleteZu();
+                            button.repaint();
                         }
                     }
-                    BoardPanel.requestFocus();
                 }
-            });
+                BoardPanel.requestFocus();
+            }
+        });
 
         GamePanel.add(button);
     }
@@ -541,6 +657,7 @@ public class GameBoard extends JFrame {
         board.blocks[index].setY_cordinate(0);
         Characters.get(index).setLocation(0,0);
         Characters.get(index).setVisible(false);
+        broadcastGameState(); // 广播状态变化
     }
 
     public void updateTimeLabel() {
@@ -555,6 +672,7 @@ public class GameBoard extends JFrame {
         isRunning = true;
         playtime.start();
         updateTimeLabel();
+        broadcastTime(); // 广播时间
     }
 
     private void plusGameTimer(){
@@ -563,6 +681,7 @@ public class GameBoard extends JFrame {
         isRunning = true;
         playtime.start();
         updateTimeLabel();
+        broadcastTime(); // 广播时间
     }
 
     private void startGameTimer() {
@@ -571,6 +690,7 @@ public class GameBoard extends JFrame {
         isRunning = true;
         playtime.start();
         updateTimeLabel();
+        broadcastTime(); // 广播时间
     }
 
     private void pauseGameTimer() {
@@ -584,7 +704,6 @@ public class GameBoard extends JFrame {
 
     //移动动画实现
     private void animateMove(BlockButton button,int finalX,int finalY){
-
         final int startX = button.getX();
         final int startY = button.getY();
         final int animationSteps = 10;
@@ -593,7 +712,6 @@ public class GameBoard extends JFrame {
         //总移动距离
         int totalXmove = finalX - startX;
         int totalYmove = finalY - startY;
-
 
         new Timer(animationDelay, new ActionListener() {
             private int currentStep = 0;
@@ -617,7 +735,6 @@ public class GameBoard extends JFrame {
     }
 
     private void animateMoveSlow(BlockButton button,int finalX,int finalY){
-
         final int startX = button.getX();
         final int startY = button.getY();
         final int animationSteps = 10;
@@ -668,7 +785,6 @@ public class GameBoard extends JFrame {
         int totalXmove = finalX + dx - startX;
         int totalYmove = finalY + dy- startY;
 
-
         new Timer(animationDelay, new ActionListener() {
             private int currentStep = 0;
 
@@ -692,5 +808,22 @@ public class GameBoard extends JFrame {
 
     private float easeOutQuad(float progress) {
         return 1 - (1 - progress) * (1 - progress);
+    }
+
+    @Override
+    protected void processWindowEvent(WindowEvent e) {
+        if (e.getID() == WindowEvent.WINDOW_CLOSING) {
+            try {
+                if (serverSocket != null) {
+                    serverSocket.close();
+                }
+                for (PrintWriter writer : clientWriters) {
+                    writer.close();
+                }
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            super.processWindowEvent(e);
+        }
     }
 }
