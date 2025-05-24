@@ -482,6 +482,7 @@ public class GameBoard extends JFrame {
                     broadcastDefeat(); // 广播失败
                 }
                 updateTimeLabel();
+                broadcastTime();
             }
         });
 
@@ -561,7 +562,7 @@ public class GameBoard extends JFrame {
     private void broadcastGameState() {
         StringBuilder state = new StringBuilder();
         for (Block block : board.blocks) {
-            state.append(block.getX_cordinate()).append(",").append(block.getY_cordinate()).append(";");
+            state.append("man,").append(block.getX_cordinate()).append(",").append(block.getY_cordinate()).append("\n");
         }
         broadcast(state.toString());
     }
@@ -583,7 +584,7 @@ public class GameBoard extends JFrame {
 
     // 广播时间
     private void broadcastTime() {
-        broadcast(String.valueOf(seconds));
+        broadcast("time,"+seconds);
     }
 
     // 以下是原有的非服务器相关方法，保持不变

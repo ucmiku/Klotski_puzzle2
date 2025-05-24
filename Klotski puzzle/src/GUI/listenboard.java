@@ -12,8 +12,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+
+
+
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Objects;
 import java.util.Random;
 
 public class listenboard extends JFrame {
@@ -174,10 +178,31 @@ public class listenboard extends JFrame {
 
             String move;
             while ((move = reader.readLine()) != null) {
+                System.out.println(move);
                 String[] parts = move.split(",");
+                if(move.equals("v")){
+                    dispose();
+                    winpanel frame = new winpanel();
+                    frame.addjpg();
+                    pauseGameTimer();
+                }
+                if(move.equals("d")){
+                    dispose();
+                    losepanel frame1 = new losepanel();
+                    frame1.addjpg();
+                    pauseGameTimer();
+                }
+                String type = parts[0];
+                if(type.equals("time")){
+                    seconds=Integer.parseInt(parts[1]);
+                }
+                if(type.equals("man")){
+                    int x=Integer.parseInt(parts[1]);
+                    int y=Integer.parseInt(parts[2]);
+                    System.out.println("what can I say");
+                }
                 if (parts.length != 2) continue;
-
-                String characterName = parts[0];
+                String characterName=parts[0];
                 char direction = parts[1].charAt(0);
 
 
