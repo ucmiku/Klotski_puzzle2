@@ -31,6 +31,7 @@ public class listenboard extends JFrame {
     public static ArrayList<tool> Tools = new ArrayList<>();
     private Image backgroundImage=images.backboard;
     private Image chessboardImage = images.chessboardImage;
+    private static int i = 0;
 
     public static int seconds; // 时间
     public static int seconds1;
@@ -126,17 +127,8 @@ public class listenboard extends JFrame {
             Characters.get(index).setVisible(false);
         }
 
-        // 添加棋子块
-        for (int i = 0; i < 10; i++) {
-            addChessBlock(board.blocks[i].getName(),
-                    board.blocks[i].getX_length(),
-                    board.blocks[i].getY_length(),
-                    board.blocks[i].getX_cordinate(),
-                    board.blocks[i].getY_cordinate());
-        }
-
-        // 连接服务器作为观众
         new Thread(this::connectAsViewer).start();
+
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -160,21 +152,15 @@ public class listenboard extends JFrame {
         });
 
         startGameTimer();
-        BoardPanel.setFocusable(true);
-        BoardPanel.requestFocus();
-        GamePanel.add(ChessBoard);
-        ChessBoard.setVisible(true);
     }
 
     private void connectAsViewer() {
-        try (Socket socket = new Socket("localhost", 12345);
+        try (Socket socket = new Socket("10.32.209.145", 12345);
              BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
             // 发送角色标识为观众（服务器端可忽略
             new PrintWriter(socket.getOutputStream(), true).println("viewer");
-
-            for(int i = 0;i < 10;i++){
-                if(board.blocks[i].getX_cordinate() * 60 != Characters.get(i).getX() || board.blocks[i].getY_cordinate() * 60 != Characters.get(i).getY())animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
-            }
+            for(int j = 1;j <= 4;j ++)
+                for(int k = 1;k <= 5;k ++)board.changeIs_available(k,j,true);
 
             String move;
             while ((move = reader.readLine()) != null) {
@@ -196,15 +182,42 @@ public class listenboard extends JFrame {
                 if(type.equals("time")){
                     seconds=Integer.parseInt(parts[1]);
                 }
+                if (type.equals("tool")){
+                    int index=Integer.parseInt(parts[1]);
+                    board.blocks[index].setX_cordinate(0);
+                    board.blocks[index].setY_cordinate(0);
+                    Characters.get(index).setLocation(0,0);
+                    Characters.get(index).setVisible(false);
+                }
                 if(type.equals("man")){
                     int x=Integer.parseInt(parts[1]);
                     int y=Integer.parseInt(parts[2]);
+                    board.blocks[i].setX_cordinate(x);
+                    board.blocks[i].setY_cordinate(y);
+                    // 添加棋子块
+                    addChessBlock(board.blocks[i].getName(),
+                                board.blocks[i].getX_length(),
+                                board.blocks[i].getY_length(),
+                                board.blocks[i].getX_cordinate(),
+                                board.blocks[i].getY_cordinate());
+                    for(int j = board.blocks[i].getY_cordinate();j <= board.blocks[i].getY_cordinate() + board.blocks[i].getY_length() - 1;j++){
+                        for(int k = board.blocks[i].getX_cordinate();k <= board.blocks[i].getX_cordinate() + board.blocks[i].getX_length() - 1;k++){
+                            board.changeIs_available(j,k,false);
+                        }
+                    }
+                    if(i==9){BoardPanel.setFocusable(true);
+                    BoardPanel.requestFocus();
+                    GamePanel.add(ChessBoard);
+                    ChessBoard.setVisible(true);}
+                    i++;
+                    if(i==10){
+                        i=0;
+                    }
                     System.out.println("what can I say");
                 }
                 if (parts.length != 2) continue;
                 String characterName=parts[0];
                 char direction = parts[1].charAt(0);
-
 
                 for (int i = 0;i < 10;i ++) {
                     if (board.blocks[i].getName().equals(characterName)) {

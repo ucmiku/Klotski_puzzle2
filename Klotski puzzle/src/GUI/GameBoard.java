@@ -9,15 +9,12 @@ import music.music;
 
 import javax.swing.Timer;
 import javax.swing.*;
-import javax.tools.Tool;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import java.net.ConnectException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Random;
 
 public class GameBoard extends JFrame {
@@ -193,6 +190,7 @@ public class GameBoard extends JFrame {
                             }
                             restartGameTimer();
                             BoardPanel.requestFocus();
+                            broadcast("w");
                             return;
                         }
                     } catch (FileNotFoundException ex) {
@@ -567,6 +565,12 @@ public class GameBoard extends JFrame {
         broadcast(state.toString());
     }
 
+    private void broadcasttool(int index){
+        StringBuilder state = new StringBuilder();
+        state.append("tool").append(index);
+        broadcast(state.toString());
+    }
+
     // 广播移动
     private void broadcastMove(String move) {
         broadcast(move);
@@ -655,11 +659,11 @@ public class GameBoard extends JFrame {
         Random rand = new Random();
         int index = rand.nextInt(4) + 6;
         board.changeIs_available(board.blocks[index].getY_cordinate(),board.blocks[index].getX_cordinate(),true);
+        broadcasttool(index);
         board.blocks[index].setX_cordinate(0);
         board.blocks[index].setY_cordinate(0);
         Characters.get(index).setLocation(0,0);
         Characters.get(index).setVisible(false);
-        broadcastGameState(); // 广播状态变化
     }
 
     public void updateTimeLabel() {
