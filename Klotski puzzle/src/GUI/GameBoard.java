@@ -439,6 +439,7 @@ public class GameBoard extends JFrame {
                         else animateMove2(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60,c);
                         if (board.isVictory()) {
                             tool.i = 0;
+                            BlockButton.i = 0;
                             winpanel frame = new winpanel();
                             frame.addjpg();
                             pauseGameTimer();
