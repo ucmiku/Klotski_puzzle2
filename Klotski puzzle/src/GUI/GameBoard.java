@@ -183,7 +183,7 @@ public class GameBoard extends JFrame {
                 if(!board.withdraw()){
                     try {
                         b.getLoginSystem().reread(board);
-                        if(board.getLoginSystem().ReadError){
+                        if(b.getLoginSystem().ReadError){
                             JOptionPane.showMessageDialog(GamePanel,"数据损坏，已创建新游戏！");
                             for(int i = 0;i < 10 ;i++){
                                 if(Characters.get(i).getX() != board.blocks[i].getX_cordinate() * 60 || Characters.get(i).getY() != board.blocks[i].getY_cordinate() * 60)animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
@@ -438,6 +438,7 @@ public class GameBoard extends JFrame {
                         if(block.getX_cordinate() * 60 != selectedButton.getX() || block.getY_cordinate() * 60 != selectedButton.getY())animateMove(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60);
                         else animateMove2(selectedButton,block.getX_cordinate() * 60,block.getY_cordinate() * 60,c);
                         if (board.isVictory()) {
+                            tool.i = 0;
                             winpanel frame = new winpanel();
                             frame.addjpg();
                             pauseGameTimer();
@@ -510,6 +511,7 @@ public class GameBoard extends JFrame {
 
                     // 发送初始游戏状态
                     broadcastGameState();
+                    if(board.isVictory())break;
                 }
             } catch (IOException e) {
                 e.printStackTrace();

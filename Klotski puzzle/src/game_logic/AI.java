@@ -101,7 +101,7 @@ public class AI {
 
             //开始尝试移动每个方块的四个方向
             for(int index = 0;index < 10;index ++){
-                if(!currentState.board.canMoveUp(currentState.board.blocks[index])&&!currentState.board.canMoveLeft(currentState.board.blocks[index])&&!currentState.board.canMoveDown(currentState.board.blocks[index])&&!currentState.board.canMoveRight(currentState.board.blocks[index])){
+                if(currentState.board.blocks[index].getX_cordinate()==0||!currentState.board.canMoveUp(currentState.board.blocks[index])&&!currentState.board.canMoveLeft(currentState.board.blocks[index])&&!currentState.board.canMoveDown(currentState.board.blocks[index])&&!currentState.board.canMoveRight(currentState.board.blocks[index])){
                     continue;
                 }
                 for(char direction : directions){

@@ -188,6 +188,7 @@ public class listenboard extends JFrame {
                 }
                 if (type.equals("tool")){
                     int index=Integer.parseInt(parts[1]);
+                    board.changeIs_available(board.blocks[index].getY_cordinate(),board.blocks[index].getX_cordinate(),true);
                     board.blocks[index].setX_cordinate(0);
                     board.blocks[index].setY_cordinate(0);
                     Characters.get(index).setLocation(0,0);
