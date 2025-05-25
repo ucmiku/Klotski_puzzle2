@@ -136,7 +136,6 @@ public class listenboard extends JFrame {
         });
         playtime = new Timer(1000, e -> {
             if (isRunning) {
-                seconds--;
                 seconds1++;
                 if (seconds <= 0) {
                     dispose();
@@ -163,16 +162,12 @@ public class listenboard extends JFrame {
             while ((move = reader.readLine()) != null) {
                 System.out.println(move);
                 String[] parts = move.split(",");
-                if(move.equals("v")){
-                    dispose();
-                    winpanel frame = new winpanel();
-                    frame.addjpg();
-                    pauseGameTimer();
-                }
                 if(move.equals("w")){
                     if (!board.getProcess().isEmpty()) {
+                        board.withdraw();
                         for (BlockButton b1 : Characters) {
                             if (b1.getName().equals(board.getWithdrawName())) {
+                                System.out.println("shabi");
                                 animateMove(b1,board.blocks[board.getWithdrawBlockNumber()].getX_cordinate() * 60,
                                         board.blocks[board.getWithdrawBlockNumber()].getY_cordinate() * 60);
                             }

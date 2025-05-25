@@ -8,13 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/listenboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/listenboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$11.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$12.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$12.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$13.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$13.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$14.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$14.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$3.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$4.class" afterDir="false" />
@@ -233,7 +226,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748056151810</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="你改一下listenboard.connectAsViewer.man的部分">
+      <option name="closed" value="true" />
+      <created>1748164217507</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1748164217507</updated>
+    </task>
+    <task id="LOCAL-00017" summary="你改一下listenboard.connectAsViewer.man的部分">
+      <option name="closed" value="true" />
+      <created>1748165303622</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1748165303622</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

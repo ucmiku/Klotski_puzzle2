@@ -190,7 +190,6 @@ public class GameBoard extends JFrame {
                             }
                             restartGameTimer();
                             BoardPanel.requestFocus();
-                            broadcast("w");
                             return;
                         }
                     } catch (FileNotFoundException ex) {
@@ -204,7 +203,7 @@ public class GameBoard extends JFrame {
                     }
                 }
                 BoardPanel.repaint();
-                broadcastMove(board.getWithdrawName() + ",w"); // 广播撤回操作
+                broadcastMove("w"); // 广播撤回操作
             } else {
                 JOptionPane.showMessageDialog(GamePanel, "无可撤回的步数！");
             }
