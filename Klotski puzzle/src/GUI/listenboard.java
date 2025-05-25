@@ -3,16 +3,13 @@ package GUI;
 
 import game_logic.Block;
 import game_logic.Board;
+import game_logic.Boards;
 import loginmodel.LoginSystem;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
-
+import java.io.*;
 
 
 import java.net.Socket;
@@ -172,6 +169,18 @@ public class listenboard extends JFrame {
                     frame.addjpg();
                     pauseGameTimer();
                 }
+                if(move.equals("w")){
+                    if (!board.getProcess().isEmpty()) {
+                        for (BlockButton b1 : Characters) {
+                            if (b1.getName().equals(board.getWithdrawName())) {
+                                animateMove(b1,board.blocks[board.getWithdrawBlockNumber()].getX_cordinate() * 60,
+                                        board.blocks[board.getWithdrawBlockNumber()].getY_cordinate() * 60);
+                            }
+                        }
+                        BoardPanel.repaint();
+                    }
+                    BoardPanel.requestFocus();
+                }
                 if(move.equals("d")){
                     dispose();
                     losepanel frame1 = new losepanel();
@@ -188,6 +197,23 @@ public class listenboard extends JFrame {
                     board.blocks[index].setY_cordinate(0);
                     Characters.get(index).setLocation(0,0);
                     Characters.get(index).setVisible(false);
+                }
+                if(type.equals("r")){
+                    int index=Integer.parseInt(parts[1]);
+                    pauseGameTimer();
+                    board = new Board();
+                    if(SelectLevel.level == 2){
+                        Random rand = new Random();
+                        board = new Boards().boards[index];
+                    }
+                    for(int i = 0;i < 10 ;i++){
+                        if(Characters.get(i).getX() != board.blocks[i].getX_cordinate() * 60 || Characters.get(i).getY() != board.blocks[i].getY_cordinate() * 60){
+                            Characters.get(i).setVisible(true);
+                            animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
+                        }
+                    }
+                    restartGameTimer();
+                    BoardPanel.requestFocus();
                 }
                 if(type.equals("man")){
                     int x=Integer.parseInt(parts[1]);

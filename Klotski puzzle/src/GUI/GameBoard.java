@@ -241,9 +241,11 @@ public class GameBoard extends JFrame {
                 Tools.get(0).setUsed(false);
                 Tools.get(1).setUsed(false);
             }
+            int index=0;
             if(SelectLevel.level == 2){
                 Random rand = new Random();
-                board = new Boards().boards[rand.nextInt(5)];
+                index = rand.nextInt(5);
+                board = new Boards().boards[index];
             }
             for(int i = 0;i < 10 ;i++){
                 if(Characters.get(i).getX() != board.blocks[i].getX_cordinate() * 60 || Characters.get(i).getY() != board.blocks[i].getY_cordinate() * 60){
@@ -252,7 +254,7 @@ public class GameBoard extends JFrame {
                 }
             }
             restartGameTimer();
-            broadcastGameState(); // 广播游戏状态
+            broadcast("r," + index);
             BoardPanel.requestFocus();
         });
 
@@ -566,9 +568,7 @@ public class GameBoard extends JFrame {
     }
 
     private void broadcasttool(int index){
-        StringBuilder state = new StringBuilder();
-        state.append("tool").append(index);
-        broadcast(state.toString());
+        broadcast("tool," + index);
     }
 
     // 广播移动
