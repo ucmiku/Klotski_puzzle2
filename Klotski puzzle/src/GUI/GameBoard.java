@@ -226,6 +226,13 @@ public class GameBoard extends JFrame {
                 }
                 startGameTimer();
                 updateTimeLabel();
+
+                if(SelectLevel.level==3||SelectLevel.level==4) {
+                    Tools.get(0).setUsed(LoginSystem.tool1 == 0);
+                }
+                if(SelectLevel.level==3||SelectLevel.level==4) {
+                    Tools.get(1).setUsed(LoginSystem.tool2 == 0);
+                }
                 broadcastGameState(); // 广播游戏状态
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
