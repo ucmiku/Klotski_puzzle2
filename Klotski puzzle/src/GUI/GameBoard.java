@@ -445,6 +445,7 @@ public class GameBoard extends JFrame {
                             pauseGameTimer();
                             broadcastVictory(); // 广播胜利
                             dispose();
+                            closeNetworkResources();
                         }
                         break;
                     }
@@ -478,6 +479,7 @@ public class GameBoard extends JFrame {
                 if (seconds <= 0) {
                     dispose();
                     losepanel panel = new losepanel();
+                    closeNetworkResources();
                     panel.addjpg();
                     pauseGameTimer();
                     broadcastDefeat(); // 广播失败
@@ -512,7 +514,6 @@ public class GameBoard extends JFrame {
 
                     // 发送初始游戏状态
                     broadcastGameState();
-                    if(board.isVictory())break;
                 }
             } catch (IOException e) {
                 e.printStackTrace();
@@ -832,6 +833,26 @@ public class GameBoard extends JFrame {
                 ex.printStackTrace();
             }
             super.processWindowEvent(e);
+        }
+    }
+
+    private void closeNetworkResources() {
+        try {
+            // 关闭所有客户端连接
+            for (PrintWriter writer : clientWriters) {
+                if (writer != null) {
+                    writer.close();
+                }
+            }
+            clientWriters.clear();
+
+            // 关闭服务器Socket
+            if (serverSocket != null && !serverSocket.isClosed()) {
+                serverSocket.close();
+                System.out.println("服务器已关闭");
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }

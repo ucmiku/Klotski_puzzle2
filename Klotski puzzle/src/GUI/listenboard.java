@@ -406,37 +406,6 @@ public class listenboard extends JFrame {
         }).start();
     }
 
-    private void animateMoveSlow(BlockButton button,int finalX,int finalY){
-
-        final int startX = button.getX();
-        final int startY = button.getY();
-        final int animationSteps = 10;
-        final int animationDelay = 40;
-
-        //总移动距离
-        int totalXmove = finalX - startX;
-        int totalYmove = finalY - startY;
-
-        new Timer(animationDelay, new ActionListener() {
-            private int currentStep = 0;
-
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                int x;
-                int y;
-                float progress = easeOutQuad((float)++currentStep / animationSteps);
-                x = startX + (int)(totalXmove * progress);
-                y = startY + (int)(totalYmove * progress);
-                button.setLocation(x,y);
-                BoardPanel.repaint();
-                if(currentStep >= animationSteps){
-                    button.setLocation(finalX,finalY);
-                    ((Timer)e.getSource()).stop();
-                    BoardPanel.repaint();
-                }
-            }
-        }).start();
-    }
 
     private void animateMove2(BlockButton button,int finalX,int finalY,char direction){
         final int startX = button.getX();
