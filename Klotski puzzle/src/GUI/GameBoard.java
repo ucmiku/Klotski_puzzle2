@@ -620,11 +620,11 @@ public class GameBoard extends JFrame {
 
     private void addToolBlock(String name) {
         tool button = new tool(60,60,name);
-        button.setBounds(570,200 + 70 * tool.i,60,60);
+        button.setBounds(570,270 + 70 * tool.i,60,60);
         Tools.add(button);
         if(tool.i==1&&SelectLevel.level==4){
             button.setUsed(LoginSystem.tool1 != 1);
-        }else if(tool.i==2&&SelectLevel.level==4){
+        }else if(tool.i==0&&SelectLevel.level==4){
             button.setUsed(LoginSystem.tool2 != 1);
         }
         System.out.println(tool.i);
@@ -747,7 +747,7 @@ public class GameBoard extends JFrame {
         final int startX = button.getX();
         final int startY = button.getY();
         final int animationSteps = 10;
-        final int animationDelay = 40;
+        final int animationDelay = 10;
 
         //总移动距离
         int totalXmove = finalX - startX;

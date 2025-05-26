@@ -21,6 +21,9 @@ public class tool extends JComponent {
         this.name = name;
         this.image = images.tool[i];
         i++;
+        if(i==2){
+            i=0;
+        }
         setPreferredSize(new Dimension(width,height));
     }
 

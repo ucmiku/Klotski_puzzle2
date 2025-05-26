@@ -1,4 +1,3 @@
-// listenboard.java（简化版观看界面）
 package GUI;
 
 import game_logic.Block;
@@ -23,6 +22,7 @@ public class listenboard extends JFrame {
     private PrintWriter playerWriter;
     private static Board board;
     private BlockButton selectedButton;
+    private JButton back = new JButton("返回界面");
     private JButton[] moveButton = new JButton[4];
     private ArrayList<BlockButton> Characters = new ArrayList<>();
     public static ArrayList<tool> Tools = new ArrayList<>();
@@ -41,7 +41,8 @@ public class listenboard extends JFrame {
     JPanel MovePanel = new JPanel(null);
     JPanel ChessBoard = new JPanel(null);
     String[] name = {"←","→","↑","↓"};
-
+    private BufferedReader reader;
+    private Socket clientSocket;
     public listenboard(Board b, boolean isVisitor) {
         setTitle("在线观看");
         setSize(750, 450);
@@ -61,6 +62,10 @@ public class listenboard extends JFrame {
         GamePanel.setBounds(0, 0, 750, 450);
         setContentPane(GamePanel);
 
+        back.setBounds(330,340,100,50);
+        back.setForeground(Color.BLUE);
+        GamePanel.add(back);
+
         // 创建棋盘面板
         ChessBoard = new JPanel() {
             @Override
@@ -71,10 +76,6 @@ public class listenboard extends JFrame {
         };
         ChessBoard.setLayout(null);
         ChessBoard.setBounds(45, 47, 270, 330);
-
-        // 初始化组件
-        JLabel tips = new JLabel("请用方向键或点击按钮控制方块移动！");
-        ClosingFrame closingPanel = new ClosingFrame();
 
         BoardPanel.setBounds(0, 10, 300, 360);
         BoardPanel.setOpaque(false);
@@ -126,6 +127,14 @@ public class listenboard extends JFrame {
 
         new Thread(this::connectAsViewer).start();
 
+        back.addActionListener(e -> {
+            dispose();
+            closeResources();
+            SelectLevel.l4.setVisible(false);
+            Login.getSelectLevel().setVisible(true);
+            BlockButton.i = 0;
+            BoardPanel.requestFocus();
+        });
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -151,10 +160,11 @@ public class listenboard extends JFrame {
     }
 
     private void connectAsViewer() {
-        try (Socket socket = new Socket("10.32.209.145", 12345);
-             BufferedReader reader = new BufferedReader(new InputStreamReader(socket.getInputStream()))) {
-            // 发送角色标识为观众（服务器端可忽略
-            new PrintWriter(socket.getOutputStream(), true).println("viewer");
+        try { clientSocket = new Socket("10.32.209.145", 12345);
+            reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
+            playerWriter = new PrintWriter(clientSocket.getOutputStream(), true);
+
+            playerWriter.println("viewer");
             for(int j = 1;j <= 4;j ++)
                 for(int k = 1;k <= 5;k ++)board.changeIs_available(k,j,true);
 
@@ -178,6 +188,7 @@ public class listenboard extends JFrame {
                 }
                 if(move.equals("d")){
                     dispose();
+                    closeResources();
                     losepanel frame1 = new losepanel();
                     frame1.addjpg();
                     pauseGameTimer();
@@ -251,6 +262,7 @@ public class listenboard extends JFrame {
                             frame.addjpg();
                             pauseGameTimer();
                             dispose();
+                            closeResources();
                         }
                         break;
                     }
@@ -451,5 +463,32 @@ public class listenboard extends JFrame {
 
     private float easeOutQuad(float progress) {
         return 1 - (1 - progress) * (1 - progress);
+    }
+
+    private void closeResources() {
+        if (playtime != null) {
+            playtime.stop();
+        }// 停止计时器
+
+        try {
+            if (clientSocket != null && !clientSocket.isClosed()) {
+                clientSocket.close();
+                System.out.println("Socket连接已关闭");
+            }
+        } catch (IOException e) {
+            System.err.println("关闭Socket时出错: " + e.getMessage());
+        }
+
+        try {
+            if (reader != null) {
+                reader.close();
+            }
+        } catch (IOException e) {
+            System.err.println("关闭reader时出错: " + e.getMessage());
+        } // 关闭reader
+
+        if (playerWriter != null) {
+            playerWriter.close();
+        }// 关闭writer
     }
 }
