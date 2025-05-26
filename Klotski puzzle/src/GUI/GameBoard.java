@@ -28,6 +28,7 @@ public class GameBoard extends JFrame {
     private JButton saveGame = new JButton("保存数据");
     private JButton withdraw = new JButton("撤回");
     private JButton AutoSolution = new JButton("召唤神力");
+    private JButton BacktoSelect = new JButton("返回选关");
     private ArrayList<BlockButton> Characters = new ArrayList<>();
     public static ArrayList<tool> Tools = new ArrayList<>();
     private Image backgroundImage=images.backboard;
@@ -134,6 +135,10 @@ public class GameBoard extends JFrame {
         loadgame.setForeground(Color.BLUE);
         if (!IsVisitor) GamePanel.add(loadgame);
 
+        BacktoSelect.setBounds(570,50,100,50);
+        BacktoSelect.setForeground(Color.BLUE);
+        GamePanel.add(BacktoSelect);
+
         // 提示标签
         tips.setBounds(330, 230, 400, 30);
         tips.setForeground(Color.WHITE);
@@ -155,7 +160,16 @@ public class GameBoard extends JFrame {
         GamePanel.add(timeLabel);
         GamePanel.add(timeLabel2);
 
-        if (SelectLevel.level==1){ //关卡1：随机删除一个除了曹操以外的方块
+        // 添加棋子块
+        for (int i = 0; i < 10; i++) {
+            addChessBlock(board.blocks[i].getName(),
+                    board.blocks[i].getX_length(),
+                    board.blocks[i].getY_length(),
+                    board.blocks[i].getX_cordinate(),
+                    board.blocks[i].getY_cordinate());
+        }
+
+        if (SelectLevel.level==1 && !SelectLevel.isL4){ //关卡1：随机删除一个除了曹操以外的方块
             Random rand = new Random();
             int index = rand.nextInt(8) + 1;
             for(int i = board.blocks[index].getY_cordinate();i <= board.blocks[index].getY_cordinate() + board.blocks[index].getY_length() - 1;i++)
@@ -166,15 +180,6 @@ public class GameBoard extends JFrame {
             board.blocks[index].setY_cordinate(0);
             Characters.get(index).setLocation(0,0);
             Characters.get(index).setVisible(false);
-        }
-
-        // 添加棋子块
-        for (int i = 0; i < 10; i++) {
-            addChessBlock(board.blocks[i].getName(),
-                    board.blocks[i].getX_length(),
-                    board.blocks[i].getY_length(),
-                    board.blocks[i].getX_cordinate(),
-                    board.blocks[i].getY_cordinate());
         }
 
         // 按钮事件监听
@@ -222,6 +227,7 @@ public class GameBoard extends JFrame {
                 pauseGameTimer();
                 board = b.getLoginSystem().readdata(b);
                 for(int i = 0;i < 10 ;i++){
+                    if(board.blocks[i].getX_cordinate() == 0)Characters.get(i).setVisible(false);
                     if(Characters.get(i).getX() != board.blocks[i].getX_cordinate() * 60 || Characters.get(i).getY() != board.blocks[i].getY_cordinate() * 60)animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);                    repaint();
                 }
                 startGameTimer();
@@ -248,7 +254,7 @@ public class GameBoard extends JFrame {
                 Tools.get(1).setUsed(false);
             }
             int index=0;
-            if(SelectLevel.level == 2){
+            if(SelectLevel.level == 2 && !SelectLevel.isL4){
                 Random rand = new Random();
                 index = rand.nextInt(5);
                 board = new Boards().boards[index];
@@ -306,6 +312,35 @@ public class GameBoard extends JFrame {
                 });
 
                 solutionTimer.start();
+                BoardPanel.requestFocus();
+            }
+        });
+
+        BacktoSelect.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                pauseGameTimer();
+                if (!IsVisitor) {
+                    closingPanel.setVisible(true);
+                    closingPanel.Yes.addActionListener(ev -> {
+                        b.getLoginSystem().save(board.getcordinate(), board.getProcess());
+                        SelectLevel.l4.setVisible(true);
+                        BlockButton.i = 0;
+                        tool.i = 0;
+                        closingPanel.setVisible(false);
+                        dispose();
+                        Login.selectLevel.setVisible(true);
+                    });
+                    closingPanel.No.addActionListener(ev -> {
+                        BlockButton.i = 0;
+                        tool.i = 0;
+                        Login.loginSystem.save(new Board().getcordinate(),new Board().getProcess());
+                        SelectLevel.l4.setVisible(false);
+                        dispose();
+                        closingPanel.setVisible(false);
+                        Login.selectLevel.setVisible(true);
+                    });
+                }
                 BoardPanel.requestFocus();
             }
         });

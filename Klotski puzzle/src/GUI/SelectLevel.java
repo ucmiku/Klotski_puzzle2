@@ -16,6 +16,7 @@ public class SelectLevel extends JFrame {
     private JButton l2 = new JButton("移形换影");
     private JButton l3 = new JButton("科技革命");
     private JButton l5 = new JButton("坐观天下");
+    public static boolean isL4 = false;
     public static JButton l4 = new JButton("继续游戏");
     private Boards boards = new Boards();
 
@@ -60,6 +61,7 @@ public class SelectLevel extends JFrame {
         GamePanel.add(l5,gbConstraints);
 
         l1.addActionListener(e -> {
+            isL4 = false;
             level=1;
             dispose();
             GameBoard gameBoard = null;
@@ -70,6 +72,7 @@ public class SelectLevel extends JFrame {
             gameBoard.setVisible(true);
         });
         l2.addActionListener(e -> {
+            isL4 = false;
             level=2;
             dispose();
             GameBoard gameBoard = null;
@@ -81,6 +84,7 @@ public class SelectLevel extends JFrame {
             gameBoard.setVisible(true);
         });
         l3.addActionListener(e -> {
+            isL4 = false;
             level=3;
             dispose();
             GameBoard gameBoard = null;
@@ -104,13 +108,21 @@ public class SelectLevel extends JFrame {
             GamePanel.add(l4,gbConstraints);
 
             l4.addActionListener(e -> {
+                isL4 = true;
                 load=1;
                 dispose();
                 GameBoard gameBoard = null;
                 if(LoginSystem.level == 3||LoginSystem.level==4){
                     level=4;
                 }
-                gameBoard = new GameBoard(Login.getB(),Login.IsVisitor);
+                Board board = new Board();
+                try {
+                    board.setLoginSystem(Login.loginSystem);
+                    board = Login.loginSystem.readdata(board);
+                } catch (FileNotFoundException ex) {
+                    throw new RuntimeException(ex);
+                }
+                gameBoard = new GameBoard(board,Login.IsVisitor);
                 gameBoard.setVisible(true);
             });
         }

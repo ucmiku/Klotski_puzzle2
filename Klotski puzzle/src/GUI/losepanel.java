@@ -1,5 +1,7 @@
 package GUI;
 
+import game_logic.Board;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -34,6 +36,8 @@ public class losepanel extends JFrame {
                 SelectLevel.l4.setVisible(false);
                 Login.getSelectLevel().setVisible(true);
                 BlockButton.i = 0;
+                tool.i = 0;
+                Login.loginSystem.save(new Board().getcordinate(),new Board().getProcess());
             }
         });
         panel.add(button);

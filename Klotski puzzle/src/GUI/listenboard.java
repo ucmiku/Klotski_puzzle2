@@ -177,7 +177,6 @@ public class listenboard extends JFrame {
                         board.withdraw();
                         for (BlockButton b1 : Characters) {
                             if (b1.getName().equals(board.getWithdrawName())) {
-                                System.out.println("shabi");
                                 animateMove(b1,board.blocks[board.getWithdrawBlockNumber()].getX_cordinate() * 60,
                                         board.blocks[board.getWithdrawBlockNumber()].getY_cordinate() * 60);
                             }

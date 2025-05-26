@@ -1,5 +1,7 @@
 package GUI;
 
+import game_logic.Board;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -32,11 +34,13 @@ public class winpanel extends JFrame {
                 int second=(GameBoard.seconds)%60;
                 int step=GameBoard.getBoard().getProcess().size()+1;
                 JOptionPane.showMessageDialog(null, "你还剩"+minte+"分钟"+second+"秒,用了 "+step +"步");
+                BlockButton.i = 0;
+                tool.i = 0;
+                Login.loginSystem.save(new Board().getcordinate(),new Board().getProcess());
                 JFrame frame = (JFrame)SwingUtilities.getWindowAncestor((Component)e.getSource());
                 frame.dispose();
                 SelectLevel.l4.setVisible(false);
                 Login.getSelectLevel().setVisible(true);
-                BlockButton.i = 0;
             }
         });
         panel.add(button);

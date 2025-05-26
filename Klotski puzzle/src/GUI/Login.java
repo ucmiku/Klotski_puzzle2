@@ -26,6 +26,10 @@ public class Login extends JFrame {
         this.b = b;
     }
 
+    public static void setLoginSystem(LoginSystem loginSystem) {
+        Login.loginSystem = loginSystem;
+    }
+
     public LoginSystem getLoginSystem() {
         return loginSystem;
     }
