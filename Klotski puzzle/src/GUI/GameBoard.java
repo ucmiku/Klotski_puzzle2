@@ -329,6 +329,7 @@ public class GameBoard extends JFrame {
                         tool.i = 0;
                         closingPanel.setVisible(false);
                         dispose();
+                        closeNetworkResources();
                         Login.selectLevel.setVisible(true);
                     });
                     closingPanel.No.addActionListener(ev -> {
@@ -337,6 +338,7 @@ public class GameBoard extends JFrame {
                         Login.loginSystem.save(new Board().getcordinate(),new Board().getProcess());
                         SelectLevel.l4.setVisible(false);
                         dispose();
+                        closeNetworkResources();
                         closingPanel.setVisible(false);
                         Login.selectLevel.setVisible(true);
                     });
@@ -636,7 +638,6 @@ public class GameBoard extends JFrame {
         broadcast("time,"+seconds);
     }
 
-    // 以下是原有的非服务器相关方法，保持不变
     private void addChessBlock(String name, int width, int height, int x, int y) {
         BlockButton button = new BlockButton(width * 60, height * 60, false, name);
         button.setBounds(0,0,width * 60,height * 60);

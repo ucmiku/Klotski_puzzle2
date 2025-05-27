@@ -9,6 +9,8 @@ public class music {
     public static String DESKTOP_PATH = System.getProperty("user.home") + "\\Desktop\\Klotski puzzle\\";
     public static String location=DESKTOP_PATH+"jpop.wav";
     public static String location1=DESKTOP_PATH+"11.wav";
+    public static String location2=DESKTOP_PATH+"12.wav";
+    public static String location3=DESKTOP_PATH+"13.wav";
 
     public static void playmusic(){
         try{
@@ -27,6 +29,22 @@ public class music {
         }
     }
     public static void playsound(){
+        try{
+            File musicFile = new File(location1);
+            if (musicFile.exists()) {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+            } else {
+                System.err.println("错误：音乐文件未找到！");
+            }
+        } catch (Exception e) {
+            System.out.println("failed");
+        }
+    }
+
+    public static void winmusic(){
         try{
             File musicFile = new File(location1);
             if (musicFile.exists()) {
