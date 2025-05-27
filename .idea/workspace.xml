@@ -4,34 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="efebb8c9-f26c-4964-8fd9-4386004ec8b4" name="更改" comment="返回首页按钮已更新">
+    <list default="true" id="efebb8c9-f26c-4964-8fd9-4386004ec8b4" name="更改" comment="re">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/GameBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/listenboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/listenboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/losepanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/losepanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/GUI/winpanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/GUI/winpanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/music/music.java" beforeDir="false" afterPath="$PROJECT_DIR$/Klotski puzzle/src/music/music.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$10.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$5.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$6.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$7.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$8.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$9.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$ClientHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard$ClientHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/GameBoard.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$images.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login$images.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/Login.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/SelectLevel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/losepanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/losepanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/losepanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/losepanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/losepanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/losepanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/winpanel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/music/music.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/music/music.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/watch/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Klotski puzzle/src/watch/Server.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/GUI/listenboard.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/Klotski puzzle/watch/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Klotski puzzle/watch/Client.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,7 +262,15 @@
       <option name="project" value="LOCAL" />
       <updated>1748251757540</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="re">
+      <option name="closed" value="true" />
+      <created>1748312113461</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1748312113461</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -310,7 +302,8 @@
     <MESSAGE value="socket close" />
     <MESSAGE value="返回首页按钮已更新" />
     <MESSAGE value="loadgame" />
-    <option name="LAST_COMMIT_MESSAGE" value="loadgame" />
+    <MESSAGE value="re" />
+    <option name="LAST_COMMIT_MESSAGE" value="re" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

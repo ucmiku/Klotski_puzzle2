@@ -46,7 +46,23 @@ public class music {
 
     public static void winmusic(){
         try{
-            File musicFile = new File(location1);
+            File musicFile = new File(location2);
+            if (musicFile.exists()) {
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioStream);
+                clip.start();
+            } else {
+                System.err.println("错误：音乐文件未找到！");
+            }
+        } catch (Exception e) {
+            System.out.println("failed");
+        }
+    }
+
+    public static void losemusic(){
+        try{
+            File musicFile = new File(location3);
             if (musicFile.exists()) {
                 AudioInputStream audioStream = AudioSystem.getAudioInputStream(musicFile);
                 Clip clip = AudioSystem.getClip();

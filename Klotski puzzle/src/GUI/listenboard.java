@@ -160,7 +160,7 @@ public class listenboard extends JFrame {
     }
 
     private void connectAsViewer() {
-        try { clientSocket = new Socket("10.32.209.145", 12345);
+        try { clientSocket = new Socket("10.26.155.63", 12345);
             reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             playerWriter = new PrintWriter(clientSocket.getOutputStream(), true);
 

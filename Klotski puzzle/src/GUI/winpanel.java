@@ -1,6 +1,7 @@
 package GUI;
 
 import game_logic.Board;
+import music.music;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,8 @@ import java.awt.event.ActionListener;
 public class winpanel extends JFrame {
 
     public void addjpg() {
+        music.winmusic();
+
         this.setSize(600, 600);
         this.setLocationRelativeTo(null);
         this.setTitle("you are win");

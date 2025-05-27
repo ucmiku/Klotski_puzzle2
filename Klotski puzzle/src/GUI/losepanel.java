@@ -1,6 +1,7 @@
 package GUI;
 
 import game_logic.Board;
+import music.music;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 public class losepanel extends JFrame {
 
     public void addjpg() {
+        music.losemusic();
         this.setSize(600, 600);
         this.setLocationRelativeTo(null);
         this.setTitle("you failed");
