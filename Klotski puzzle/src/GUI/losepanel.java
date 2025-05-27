@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+//失败窗口
 public class losepanel extends JFrame {
 
     public void addjpg() {
@@ -35,6 +35,7 @@ public class losepanel extends JFrame {
                 JOptionPane.showMessageDialog(null, "再接再厉");
                 JFrame frame = (JFrame)SwingUtilities.getWindowAncestor((Component)e.getSource());
                 frame.dispose();
+                SelectLevel.isListenBoard = false;
                 SelectLevel.l4.setVisible(false);
                 Login.getSelectLevel().setVisible(true);
                 BlockButton.i = 0;

@@ -3,6 +3,7 @@ package game_logic;
 public class Boards {
     public Board[] boards = new Board[5];
 
+    //此类用于存储第二关对应的五种棋盘
     public Boards(){
         for(int i = 0;i < 5 ;++i){
             boards[i] = new Board();

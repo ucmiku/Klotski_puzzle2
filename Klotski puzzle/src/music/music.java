@@ -5,6 +5,7 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import java.io.File;
 
+//储存音乐
 public class music {
     public static String DESKTOP_PATH = System.getProperty("user.home") + "\\Desktop\\Klotski puzzle\\";
     public static String location=DESKTOP_PATH+"jpop.wav";

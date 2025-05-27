@@ -56,6 +56,7 @@ public class Board {
         for(int i = 0;i <= 9;i++){
             blocks[i] = new Block();//初始化blocks
         }
+        //默认棋盘
         blocks[0].setBlock("caocao",2,1,2,2);
         blocks[1].setBlock("huangzhong",1,1,1,2);
         blocks[2].setBlock("zhangfei",4,1,1,2);
@@ -71,6 +72,7 @@ public class Board {
         is_available[5][3] = true;//棋盘刚开始的状态，下面两个空位
     }//初始化棋盘，is_available用于记录该位置是否为空，true表示为空
 
+    //用于储存棋盘的坐标
     public ArrayList<String> getcordinate(){
         ArrayList<String> tmpstrs = new ArrayList<>();
         for(Block b : blocks){
@@ -82,6 +84,7 @@ public class Board {
         return tmpstrs;
     }
 
+    //4种方向是否可以移动的判断， 用于自动通关类
     public boolean canMoveLeft(Block block){
         for(int i = block.getY_cordinate(); i <= block.getY_cordinate() + block.getY_length() - 1; i++){
             if(!is_available[i][block.getX_cordinate() - 1])return false;//检查左边是否有空位
@@ -110,6 +113,7 @@ public class Board {
         return true;
     }
 
+    //移动逻辑
     public void movement(char checkdirection,Block targetblock){
         Block block = new Block();
 
@@ -175,14 +179,12 @@ public class Board {
         }
     }
 
+    //标记被撤回的方块，用于撤回按钮
     public String getWithdrawName() {
         return WithdrawName;
     }
 
-    public void setWithdrawName(String withdrawName) {
-        WithdrawName = withdrawName;
-    }
-
+    //撤回逻辑
     public boolean withdraw(){
         String s1 = process.getLast();
         char[] c = s1.toCharArray();
@@ -273,6 +275,7 @@ public class Board {
         return true;
     }
 
+    //胜利判断逻辑
     public boolean isVictory(){
         if(blocks[0].getX_cordinate() == 2 && blocks[0].getY_cordinate() == 4)return true;
         return false;

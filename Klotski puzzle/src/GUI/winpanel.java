@@ -33,6 +33,18 @@ public class winpanel extends JFrame {
         button.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {//监听button
+                //检测是否为观战模式
+                if(SelectLevel.isListenBoard = true){
+                    SelectLevel.isListenBoard = false;
+                    BlockButton.i = 0;
+                    tool.i = 0;
+                    Login.loginSystem.save(new Board().getcordinate(),new Board().getProcess());
+                    JFrame frame = (JFrame)SwingUtilities.getWindowAncestor((Component)e.getSource());
+                    frame.dispose();
+                    SelectLevel.l4.setVisible(false);
+                    Login.getSelectLevel().setVisible(true);
+                    return;
+                }
                 int minte=(GameBoard.seconds)/60;
                 int second=(GameBoard.seconds)%60;
                 int step=GameBoard.getBoard().getProcess().size()+1;

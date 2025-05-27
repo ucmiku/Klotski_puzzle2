@@ -18,9 +18,12 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class GameBoard extends JFrame {
+    //在线观看
     private ServerSocket serverSocket;
     private ArrayList<PrintWriter> clientWriters = new ArrayList<>();
+    //展示的board
     private static Board board;
+    //各个按钮
     private BlockButton selectedButton;
     private JButton[] moveButton = new JButton[4];
     private JButton loadgame = new JButton("加载游戏");
@@ -31,9 +34,9 @@ public class GameBoard extends JFrame {
     private JButton BacktoSelect = new JButton("返回选关");
     private ArrayList<BlockButton> Characters = new ArrayList<>();
     public static ArrayList<tool> Tools = new ArrayList<>();
+    //背景初始化
     private Image backgroundImage=images.backboard;
     private Image chessboardImage = images.chessboardImage;
-    public static Board nowBoard;
 
     public static int seconds; // 时间
     public static int seconds1;
@@ -42,6 +45,7 @@ public class GameBoard extends JFrame {
     private JLabel timeLabel2;
     private boolean isRunning = false;
 
+    //panel初始化
     JPanel BoardPanel = new JPanel(null);
     JPanel GamePanel;
     JPanel MovePanel = new JPanel(null);
@@ -85,6 +89,7 @@ public class GameBoard extends JFrame {
         MovePanel.setBounds(400,50,150,150);
         MovePanel.setOpaque(false);
 
+        //移动方向键的初始化
         for(int i = 0;i < 4;i++){
             moveButton[i] = new JButton(name[i]);
             moveButton[i].setFont(new Font("SimSun", Font.BOLD,15));
@@ -169,7 +174,8 @@ public class GameBoard extends JFrame {
                     board.blocks[i].getY_cordinate());
         }
 
-        if (SelectLevel.level==1 && !SelectLevel.isL4){ //关卡1：随机删除一个除了曹操以外的方块
+        //关卡1：随机删除一个除了曹操以外的方块
+        if (SelectLevel.level==1 && !SelectLevel.isL4){
             Random rand = new Random();
             int index = rand.nextInt(8) + 1;
             for(int i = board.blocks[index].getY_cordinate();i <= board.blocks[index].getY_cordinate() + board.blocks[index].getY_length() - 1;i++)
@@ -239,7 +245,7 @@ public class GameBoard extends JFrame {
                 if(SelectLevel.level==3||SelectLevel.level==4) {
                     Tools.get(1).setUsed(LoginSystem.tool2 == 0);
                 }
-                broadcastGameState(); // 广播游戏状态
+                broadcast("load");// 广播游戏状态
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
             }
@@ -638,6 +644,7 @@ public class GameBoard extends JFrame {
         broadcast("time,"+seconds);
     }
 
+    //棋子方块的添加
     private void addChessBlock(String name, int width, int height, int x, int y) {
         BlockButton button = new BlockButton(width * 60, height * 60, false, name);
         button.setBounds(0,0,width * 60,height * 60);
@@ -645,6 +652,7 @@ public class GameBoard extends JFrame {
         if(x == 0 && y == 0)Characters.getLast().setVisible(false);
         animateMove(button,x * 60,y * 60);
 
+        //选中状态判断
         button.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -661,9 +669,11 @@ public class GameBoard extends JFrame {
         GamePanel.add(button);
     }
 
+    //道具方块的添加
     private void addToolBlock(String name) {
         tool button = new tool(60,60,name);
         button.setBounds(570,270 + 70 * tool.i,60,60);
+        button.setBorder(BorderFactory.createLineBorder(Color.BLACK,3));
         Tools.add(button);
         if(tool.i==1&&SelectLevel.level==4){
             button.setUsed(LoginSystem.tool1 != 1);
@@ -696,6 +706,7 @@ public class GameBoard extends JFrame {
         GamePanel.add(button);
     }
 
+    //两种道具的功能
     private void ToolClock(){
         pauseGameTimer();
         plusGameTimer();
@@ -712,6 +723,7 @@ public class GameBoard extends JFrame {
         Characters.get(index).setVisible(false);
     }
 
+    //计时器设置
     public void updateTimeLabel() {
         int minutes = (seconds % 3600) / 60;
         int secs = seconds % 60;
@@ -862,6 +874,7 @@ public class GameBoard extends JFrame {
         return 1 - (1 - progress) * (1 - progress);
     }
 
+    //socket的关闭
     @Override
     protected void processWindowEvent(WindowEvent e) {
         if (e.getID() == WindowEvent.WINDOW_CLOSING) {

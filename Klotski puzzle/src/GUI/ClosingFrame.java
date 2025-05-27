@@ -4,7 +4,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//关闭界面，用于退出时的判断是否保存
 public class ClosingFrame extends JFrame{
+
     JButton Yes = new JButton("是");
     JButton No = new JButton("否");
     JLabel tip = new JLabel("是否保存数据？");

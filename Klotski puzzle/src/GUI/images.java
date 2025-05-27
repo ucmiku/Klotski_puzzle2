@@ -2,6 +2,7 @@ package GUI;
 
 import java.awt.*;
 
+//图像调用类
 public class images {
     public static final String folder_PATH = System.getProperty("user.home") + "\\Desktop\\Klotski puzzle\\";
     public static Image bg = Toolkit.getDefaultToolkit().getImage(folder_PATH+"1.jpg");

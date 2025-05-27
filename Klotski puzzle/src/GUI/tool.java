@@ -6,6 +6,7 @@ import java.awt.color.ColorSpace;
 import java.awt.image.BufferedImage;
 import java.awt.image.ColorConvertOp;
 
+//道具类
 public class tool extends JComponent {
     private final String name;
     private boolean selected;
@@ -14,7 +15,8 @@ public class tool extends JComponent {
     private Image image;
     public static int i=0;
 
-    public tool(int width, int height, String name) {  //使用used来标记是否被使用
+    //使用used来标记是否被使用
+    public tool(int width, int height, String name) {
         this.width = width;
         this.height = height;
         this.used = false;
@@ -27,7 +29,8 @@ public class tool extends JComponent {
         setPreferredSize(new Dimension(width,height));
     }
 
-    protected void paintComponent(Graphics g){  //道具被使用之后的重绘制
+    //道具被使用之后的重绘制
+    protected void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
 

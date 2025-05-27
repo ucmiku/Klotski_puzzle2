@@ -8,6 +8,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.io.FileNotFoundException;
 
+//登陆窗口
 public class Login extends JFrame {
     private String ID;
     private String PASSWORD;
@@ -15,16 +16,6 @@ public class Login extends JFrame {
     private static Board b = new Board();
     public static boolean IsVisitor;
     protected static SelectLevel selectLevel;
-
-
-
-    public static Board getB() {
-        return b;
-    }
-
-    public void setB(Board b) {
-        this.b = b;
-    }
 
     public static void setLoginSystem(LoginSystem loginSystem) {
         Login.loginSystem = loginSystem;
@@ -48,12 +39,10 @@ public class Login extends JFrame {
 
     public Login(){
 
-
         JTextField id = new JTextField(10);
         JTextField password = new JTextField(10);
         JButton login = new JButton("登陆");
         JButton visitor = new JButton("游客模式");
-
 
         setTitle("三国华容道");
         setSize(300,200);
@@ -89,7 +78,8 @@ public class Login extends JFrame {
         gbConstraints.gridy = 2;
         panel.add(visitor,gbConstraints);
 
-        visitor.addActionListener(new ActionListener() {//游客模式的相应
+        //游客模式的相应
+        visitor.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 IsVisitor = true;
@@ -109,7 +99,8 @@ public class Login extends JFrame {
             }
         });
 
-        login.addActionListener(new ActionListener() {//登陆键的响应
+        //登陆键的响应
+        login.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 IsVisitor = false;
@@ -150,13 +141,7 @@ public class Login extends JFrame {
             }
         });
 
-
-
         this.add(panel);
     }
 
-    public static class images {
-        public static final String folder_PATH = System.getProperty("user.home") + "\\Desktop\\Klotski puzzle 5.12\\";
-        public static Image bg = Toolkit.getDefaultToolkit().getImage(folder_PATH+"1.jpg");
-    }
 }

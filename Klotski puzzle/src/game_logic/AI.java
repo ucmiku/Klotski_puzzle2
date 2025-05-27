@@ -19,7 +19,7 @@ public class AI {
             this.board = deepCopyBoard(other.board);
             this.moveHistory = new ArrayList<>(other.moveHistory);
         }
-
+        //强等于
         public boolean equals(Object objects){
             if(this == objects)return true;
             if(!(objects instanceof GameState))return false;
@@ -125,6 +125,7 @@ public class AI {
                 }
             }
         }
+        //无解
         return Collections.emptyList();
     }
 }

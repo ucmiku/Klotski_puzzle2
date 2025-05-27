@@ -9,14 +9,16 @@ import game_logic.Board;
 import game_logic.Boards;
 import loginmodel.LoginSystem;
 
+//选关界面
 public class SelectLevel extends JFrame {
-    public static int level;
+    public static int level;//记录关卡
     public static int load=0;
     private JButton l1 = new JButton("缺兵少两");
     private JButton l2 = new JButton("移形换影");
     private JButton l3 = new JButton("科技革命");
     private JButton l5 = new JButton("坐观天下");
-    public static boolean isL4 = false;
+    public static boolean isL4 = false;//监听是否继续游戏
+    public static boolean isListenBoard = false;//监听是否在观战
     public static JButton l4 = new JButton("继续游戏");
     private Boards boards = new Boards();
 
@@ -60,6 +62,7 @@ public class SelectLevel extends JFrame {
         gbConstraints.gridy = 3;
         GamePanel.add(l5,gbConstraints);
 
+        //五种关卡界面
         l1.addActionListener(e -> {
             isL4 = false;
             level=1;
@@ -99,6 +102,7 @@ public class SelectLevel extends JFrame {
             listenboard listenboard=null;
             Board b = new Board();
             b.setLoginSystem(Login.loginSystem);
+            isListenBoard = true;
             listenboard = new listenboard(b,Login.IsVisitor);
             listenboard.setVisible(true);
         });

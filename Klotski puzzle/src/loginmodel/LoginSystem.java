@@ -10,6 +10,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+//登录系统
 public class LoginSystem {
     private static final String DESKTOP_PATH = System.getProperty("user.home") + "\\Desktop\\Klotski puzzle\\";
     private String username;
@@ -19,6 +20,7 @@ public class LoginSystem {
     public static int level;
     public static int tool1;
     public static int tool2;
+    //检测是否为错误数据
     public boolean ReadError;
     ArrayList<String> tmp;
 
@@ -69,8 +71,9 @@ public class LoginSystem {
         }
     }
 
+    //数据读取
     public Board readdata(Board b) throws FileNotFoundException{
-        boolean isValid = true;
+        boolean isValid = true;//用于存储数据是否合法
         try (Scanner scanner = new Scanner(new File(DESKTOP_PATH + username + ".txt"))) {
             scanner.nextLine();
             time=Integer.parseInt(scanner.nextLine());
@@ -81,6 +84,7 @@ public class LoginSystem {
             if (time<=0){
                 isValid = false;
             }
+            //读取方块参数
             for(Block bb : b.blocks){
                 int x = Integer.parseInt(scanner.nextLine());
                 if(x + bb.getX_length() - 1 > 4 || x < 0)isValid = false;
@@ -146,6 +150,7 @@ public class LoginSystem {
             System.err.println("写入失败: " + e.getMessage());
         }
     }
+
     private void rewrite() {
         try (BufferedWriter writer = new BufferedWriter(
                 new FileWriter(DESKTOP_PATH + username + ".txt", false))) {
@@ -180,6 +185,7 @@ public class LoginSystem {
         }
     }
 
+    //数据保存
     public void save(ArrayList<String> data1,ArrayList<String> data2){
        rewrite();
        saveUserData(data1);
@@ -187,6 +193,7 @@ public class LoginSystem {
        loginStatus = 1;
     }
 
+    //用于读取错误数据后的重建
     public void reread(Board b) throws FileNotFoundException {
             ReadError = true;
             save(new Board().getcordinate(),new Board().getProcess());

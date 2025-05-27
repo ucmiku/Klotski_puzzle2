@@ -9,7 +9,7 @@ public class BlockButton extends JComponent {  //角色方块的几个属性：�
     private boolean selected;
     private final int width,height;
     private Image image;
-    public static int i=0;
+    public static int i=0;//i用于存储方块的下标
 
     public BlockButton(int width, int height, boolean selected, String name) {
         this.width = width;
@@ -40,6 +40,7 @@ public class BlockButton extends JComponent {  //角色方块的几个属性：�
         g2d.drawImage(image, 0, 0, getWidth(), getHeight(), this);
     }
 
+    //设置选中状态
     public void setSelected(boolean selected){
         this.selected = selected;
         repaint();

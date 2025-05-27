@@ -84,11 +84,6 @@ public class listenboard extends JFrame {
         MovePanel.setBounds(400,50,150,150);
         MovePanel.setOpaque(false);
 
-        if(SelectLevel.level==3||SelectLevel.level==4){
-            addToolBlock("Clock");
-            addToolBlock("Hammer");
-        }
-
 
         GamePanel.add(MovePanel);
         MovePanel.setVisible(true);
@@ -112,6 +107,7 @@ public class listenboard extends JFrame {
         GamePanel.add(timeLabel);
         GamePanel.add(timeLabel2);
 
+        //关卡1：随机删除一个除了曹操以外的方块
         if (SelectLevel.level==1){ //关卡1：随机删除一个除了曹操以外的方块
             Random rand = new Random();
             int index = rand.nextInt(8) + 1;
@@ -131,7 +127,9 @@ public class listenboard extends JFrame {
             dispose();
             closeResources();
             SelectLevel.l4.setVisible(false);
+            SelectLevel.isListenBoard = false;
             Login.getSelectLevel().setVisible(true);
+            tool.i = 0;
             BlockButton.i = 0;
             BoardPanel.requestFocus();
         });
@@ -191,6 +189,13 @@ public class listenboard extends JFrame {
                     losepanel frame1 = new losepanel();
                     frame1.addjpg();
                     pauseGameTimer();
+                }
+                if(move.equals("load")){
+                    board = Login.loginSystem.readdata(board);
+                    for(int i = 0;i < 10 ;i++){
+                        if(board.blocks[i].getX_cordinate() == 0)Characters.get(i).setVisible(false);
+                        if(Characters.get(i).getX() != board.blocks[i].getX_cordinate() * 60 || Characters.get(i).getY() != board.blocks[i].getY_cordinate() * 60)animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);                    repaint();
+                    }
                 }
                 String type = parts[0];
                 if(type.equals("time")){
