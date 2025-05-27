@@ -223,8 +223,6 @@ public class GameBoard extends JFrame {
         });
 
         saveGame.addActionListener(e -> {
-            LoginSystem.tool1 = (Tools.get(0).isUsed()) ?  0 : 1;
-            LoginSystem.tool2 = (Tools.get(1).isUsed()) ?  0 : 1;
             b.getLoginSystem().save(board.getcordinate(), board.getProcess());
             JOptionPane.showMessageDialog(GamePanel, "已保存游戏记录！");
             SelectLevel.l4.setVisible(true);
@@ -241,8 +239,11 @@ public class GameBoard extends JFrame {
                 }
                 startGameTimer();
                 updateTimeLabel();
-                Tools.get(0).setUsed(b.getLoginSystem().tool1 == 0);
-                Tools.get(1).setUsed(b.getLoginSystem().tool2 == 0);
+                if(SelectLevel.level == 3||SelectLevel.level == 4){
+                    Tools.get(0).setUsed(b.getLoginSystem().tool1 == 0);
+                    Tools.get(1).setUsed(b.getLoginSystem().tool2 == 0);
+                }
+
                 broadcast("load");// 广播游戏状态
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
@@ -254,10 +255,6 @@ public class GameBoard extends JFrame {
             pauseGameTimer();
             board = new Board();
 
-            for(int i = 0;i < 10 ;i++){
-                    Characters.get(i).setVisible(true);
-                    animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
-            }
 
             for(tool t : Tools) {
                 t.setUsed(false);
@@ -269,6 +266,12 @@ public class GameBoard extends JFrame {
                 index = rand.nextInt(5);
                 board = new Boards().boards[index];
             }
+
+            for(int i = 0;i < 10 ;i++){
+                Characters.get(i).setVisible(true);
+                animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
+            }
+
             if(SelectLevel.level == 1){
                 Random rand = new Random();
                 index = rand.nextInt(8) + 1;

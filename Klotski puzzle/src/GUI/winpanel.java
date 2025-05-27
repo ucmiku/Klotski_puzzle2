@@ -34,7 +34,7 @@ public class winpanel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {//监听button
                 //检测是否为观战模式
-                if(SelectLevel.isListenBoard = true){
+                if(SelectLevel.isListenBoard){
                     SelectLevel.isListenBoard = false;
                     BlockButton.i = 0;
                     tool.i = 0;

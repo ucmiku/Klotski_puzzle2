@@ -51,9 +51,9 @@ public class LoginSystem {
         try {
             if (userFile.createNewFile()) {
                 // 新用户注册
-                loginStatus = 2;
                 savePassword(password);
                 save(new Board().getcordinate(),new Board().getProcess());
+                loginStatus = 2;
                 return true;
             } else {
                 // 现有用户登录
@@ -190,7 +190,7 @@ public class LoginSystem {
        rewrite();
        saveUserData(data1);
        saveUserData(data2);
-       loginStatus = 1;
+       SelectLevel.l4.setVisible(true);
     }
 
     //用于读取错误数据后的重建
