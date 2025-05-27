@@ -55,6 +55,7 @@ public class GameBoard extends JFrame {
     public GameBoard(Board b, boolean IsVisitor)  {
         startServer();
         board = b;
+        if(IsVisitor)BacktoSelect.setName("退出游戏");
         // 创建主游戏面板（带背景）
         GamePanel = new JPanel() {
             @Override
@@ -222,6 +223,8 @@ public class GameBoard extends JFrame {
         });
 
         saveGame.addActionListener(e -> {
+            LoginSystem.tool1 = (Tools.get(0).isUsed()) ?  0 : 1;
+            LoginSystem.tool2 = (Tools.get(1).isUsed()) ?  0 : 1;
             b.getLoginSystem().save(board.getcordinate(), board.getProcess());
             JOptionPane.showMessageDialog(GamePanel, "已保存游戏记录！");
             SelectLevel.l4.setVisible(true);
@@ -238,13 +241,8 @@ public class GameBoard extends JFrame {
                 }
                 startGameTimer();
                 updateTimeLabel();
-
-                if(SelectLevel.level==3||SelectLevel.level==4) {
-                    Tools.get(0).setUsed(LoginSystem.tool1 == 0);
-                }
-                if(SelectLevel.level==3||SelectLevel.level==4) {
-                    Tools.get(1).setUsed(LoginSystem.tool2 == 0);
-                }
+                Tools.get(0).setUsed(b.getLoginSystem().tool1 == 0);
+                Tools.get(1).setUsed(b.getLoginSystem().tool2 == 0);
                 broadcast("load");// 广播游戏状态
             } catch (FileNotFoundException ex) {
                 throw new RuntimeException(ex);
@@ -255,22 +253,35 @@ public class GameBoard extends JFrame {
         restartgame.addActionListener(e -> {
             pauseGameTimer();
             board = new Board();
-            if(SelectLevel.level==3||SelectLevel.level==4){
-                Tools.get(0).setUsed(false);
-                Tools.get(1).setUsed(false);
+
+            for(int i = 0;i < 10 ;i++){
+                    Characters.get(i).setVisible(true);
+                    animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
             }
+
+            for(tool t : Tools) {
+                t.setUsed(false);
+            }
+
             int index=0;
-            if(SelectLevel.level == 2 && !SelectLevel.isL4){
+            if(SelectLevel.level == 2){
                 Random rand = new Random();
                 index = rand.nextInt(5);
                 board = new Boards().boards[index];
             }
-            for(int i = 0;i < 10 ;i++){
-                if(Characters.get(i).getX() != board.blocks[i].getX_cordinate() * 60 || Characters.get(i).getY() != board.blocks[i].getY_cordinate() * 60){
-                    Characters.get(i).setVisible(true);
-                    animateMove(Characters.get(i),board.blocks[i].getX_cordinate() * 60,board.blocks[i].getY_cordinate() * 60);
-                }
+            if(SelectLevel.level == 1){
+                Random rand = new Random();
+                index = rand.nextInt(8) + 1;
+                for(int i = board.blocks[index].getY_cordinate();i <= board.blocks[index].getY_cordinate() + board.blocks[index].getY_length() - 1;i++)
+                    for(int j = board.blocks[index].getX_cordinate();j <= board.blocks[index].getX_cordinate() + board.blocks[index].getX_length() - 1;j++){
+                        board.changeIs_available(i,j,true);
+                    }
+                board.blocks[index].setX_cordinate(0);
+                board.blocks[index].setY_cordinate(0);
+                Characters.get(index).setLocation(0,0);
+                Characters.get(index).setVisible(false);
             }
+
             restartGameTimer();
             broadcast("r," + index);
             BoardPanel.requestFocus();
@@ -348,6 +359,14 @@ public class GameBoard extends JFrame {
                         closingPanel.setVisible(false);
                         Login.selectLevel.setVisible(true);
                     });
+                }
+                else {
+                    BlockButton.i = 0;
+                    tool.i = 0;
+                    closingPanel.setVisible(false);
+                    dispose();
+                    closeNetworkResources();
+                    System.exit(0);
                 }
                 BoardPanel.requestFocus();
             }

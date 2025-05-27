@@ -123,6 +123,8 @@ public class SelectLevel extends JFrame {
                 try {
                     board.setLoginSystem(Login.loginSystem);
                     board = Login.loginSystem.readdata(board);
+                    gameBoard.Tools.get(0).setUsed(LoginSystem.tool1 == 0);
+                    gameBoard.Tools.get(1).setUsed(LoginSystem.tool2 == 0);
                 } catch (FileNotFoundException ex) {
                     throw new RuntimeException(ex);
                 }
